@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Zap, Bot, Rocket } from 'lucide-react';
 import { aboutContent } from '../data/portfolioData';
 import Card from '../components/Card';
 
@@ -98,33 +99,41 @@ const About = () => {
             {
               title: 'Backend Architecture',
               description: 'Scalable systems with Node.js, FastAPI, and microservices patterns.',
-              icon: '⚡',
+              icon: Zap,
+              color: 'text-yellow-400',
             },
             {
               title: 'AI Integration',
               description: 'Advanced AI features with OpenAI, RAG systems, and automation workflows.',
-              icon: '🤖',
+              icon: Bot,
+              color: 'text-primary',
             },
             {
               title: 'Full Stack Development',
               description: 'End-to-end solutions with MERN stack, modern UI, and production deployment.',
-              icon: '🚀',
+              icon: Rocket,
+              color: 'text-blue-400',
             },
-          ].map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-            >
-              <Card className="p-8 h-full">
-                <div className="text-4xl mb-4">{feature.icon}</div>
-                <h4 className="text-xl font-bold mb-3">{feature.title}</h4>
-                <p className="text-muted leading-relaxed">{feature.description}</p>
-              </Card>
-            </motion.div>
-          ))}
+          ].map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+              >
+                <Card className="p-8 h-full">
+                  <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 w-fit mb-4">
+                    <Icon size={32} className={feature.color} />
+                  </div>
+                  <h4 className="text-xl font-bold mb-3">{feature.title}</h4>
+                  <p className="text-muted leading-relaxed">{feature.description}</p>
+                </Card>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
