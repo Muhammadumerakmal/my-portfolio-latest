@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Mail, Heart, ExternalLink } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 const Footer = () => {
@@ -71,7 +71,7 @@ const Footer = () => {
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Linkedin size={20} className="text-muted hover:text-primary transition-colors" />
+                <ExternalLink size={20} className="text-muted hover:text-primary transition-colors" />
               </motion.a>
               <motion.a
                 href="https://github.com"
@@ -81,7 +81,7 @@ const Footer = () => {
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Github size={20} className="text-muted hover:text-primary transition-colors" />
+                <ExternalLink size={20} className="text-muted hover:text-primary transition-colors" />
               </motion.a>
             </div>
           </motion.div>

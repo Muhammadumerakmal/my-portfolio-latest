@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Rocket } from 'lucide-react';
+import { ExternalLink, Code2, Rocket } from 'lucide-react';
 import { projects } from '../data/portfolioData';
 import Card from '../components/Card';
 
@@ -86,7 +86,7 @@ const Projects = () => {
                     className="flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors"
                     whileHover={{ x: 3 }}
                   >
-                    <Github size={18} />
+                    <Code2 size={18} />
                     <span>Code</span>
                   </motion.a>
                   <motion.a
@@ -120,7 +120,7 @@ const Projects = () => {
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-card border border-white/10 hover:border-primary/50 transition-all text-sm font-medium"
             whileHover={{ scale: 1.05, y: -2 }}
           >
-            <Github size={18} />
+            <Code2 size={18} />
             <span>View All Projects on GitHub</span>
             <ExternalLink size={16} />
           </motion.a>

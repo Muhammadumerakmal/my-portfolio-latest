@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, Link2, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 import Card from '../components/Card';
 import Button from '../components/Button';
@@ -115,7 +115,7 @@ const Contact = () => {
                   whileHover={{ x: 5 }}
                 >
                   <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 group-hover:scale-110 transition-transform">
-                    <Linkedin className="text-primary" size={20} />
+                    <Link2 className="text-primary" size={20} />
                   </div>
                   <div>
                     <p className="text-sm text-muted mb-1">LinkedIn</p>
