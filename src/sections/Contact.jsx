@@ -13,7 +13,6 @@ const Contact = () => {
   });
 
   const [formStatus, setFormStatus] = useState({ type: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -46,14 +45,12 @@ const Contact = () => {
       return;
     }
 
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    setTimeout(() => {
-      setFormStatus({ type: 'success', message: 'Message sent successfully! I\'ll get back to you soon.' });
-      setFormData({ name: '', email: '', message: '' });
-      setIsSubmitting(false);
-    }, 1500);
+    // This form isn't wired to a backend yet, so don't pretend the message was
+    // sent. Point the visitor to a direct channel instead.
+    setFormStatus({
+      type: 'info',
+      message: `Thanks, ${formData.name || 'there'}! This form isn't connected yet — please email me directly at ${personalInfo.email} or connect on LinkedIn, and I'll get right back to you.`,
+    });
   };
 
   return (
@@ -223,11 +220,15 @@ const Contact = () => {
                     className={`flex items-center gap-2 p-4 rounded-xl ${
                       formStatus.type === 'success'
                         ? 'bg-green-500/10 border border-green-500/20 text-green-400'
+                        : formStatus.type === 'info'
+                        ? 'bg-primary/10 border border-primary/20 text-primary'
                         : 'bg-red-500/10 border border-red-500/20 text-red-400'
                     }`}
                   >
                     {formStatus.type === 'success' ? (
                       <CheckCircle size={20} />
+                    ) : formStatus.type === 'info' ? (
+                      <Mail size={20} />
                     ) : (
                       <AlertCircle size={20} />
                     )}
@@ -235,13 +236,8 @@ const Contact = () => {
                   </motion.div>
                 )}
 
-                <Button
-                  type="submit"
-                  variant="primary"
-                  className="w-full"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                <Button type="submit" variant="primary" className="w-full">
+                  Send Message
                   <Send size={18} />
                 </Button>
               </form>
