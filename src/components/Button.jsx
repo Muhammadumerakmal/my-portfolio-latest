@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
-const Button = ({ children, variant = 'primary', className = '', onClick, href }) => {
+const Button = ({ children, variant = 'primary', className = '', onClick, href, type, disabled = false }) => {
   const baseStyles = 'px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 inline-flex items-center gap-2';
 
   const variants = {
@@ -34,13 +34,15 @@ const Button = ({ children, variant = 'primary', className = '', onClick, href }
   const button = (
     <motion.button
       ref={ref}
-      className={buttonClass}
+      type={type}
+      disabled={disabled}
+      className={`${buttonClass} ${disabled ? 'opacity-60 cursor-not-allowed' : ''}`}
       onClick={onClick}
       onMouseMove={handleMove}
       onMouseLeave={reset}
       style={{ x: springX, y: springY }}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={disabled ? {} : { scale: 1.05 }}
+      whileTap={disabled ? {} : { scale: 0.95 }}
       transition={{ type: 'spring', stiffness: 400, damping: 17 }}
     >
       {children}

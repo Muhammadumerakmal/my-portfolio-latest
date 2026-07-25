@@ -273,6 +273,11 @@ export const projects = [
 
 // ---- Contact section -----------------------------------------------------
 export const contactMeta = {
+  // Paste your Formspree form ID to enable real in-page sending. Create a
+  // free form at https://formspree.io — the ID is the part after "/f/" in
+  // your endpoint (e.g. "xldabcde"). Leave "" to show a direct-contact
+  // notice instead of sending.
+  formspreeId: "",
   badge: "Get In Touch",
   title: "Let's Work",
   titleAccent: "Together",

@@ -13,6 +13,7 @@ const Contact = () => {
   });
 
   const [formStatus, setFormStatus] = useState({ type: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -39,18 +40,47 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
     setFormStatus({ type: '', message: '' });
 
     if (!validateForm()) {
       return;
     }
 
-    // This form isn't wired to a backend yet, so don't pretend the message was
-    // sent. Point the visitor to a direct channel instead.
-    setFormStatus({
-      type: 'info',
-      message: `Thanks, ${formData.name || 'there'}! This form isn't connected yet — please email me directly at ${personalInfo.email} or connect on LinkedIn, and I'll get right back to you.`,
-    });
+    // No Formspree ID configured: don't pretend to send — point to a direct
+    // channel instead.
+    if (!contactMeta.formspreeId) {
+      setFormStatus({
+        type: 'info',
+        message: `Thanks, ${formData.name || 'there'}! This form isn't connected yet — please email me directly at ${personalInfo.email} or connect on LinkedIn, and I'll get right back to you.`,
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const res = await fetch(`https://formspree.io/f/${contactMeta.formspreeId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        setFormStatus({ type: 'success', message: "Message sent! I'll get back to you soon." });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setFormStatus({
+          type: 'error',
+          message: `Something went wrong. Please email me directly at ${personalInfo.email}.`,
+        });
+      }
+    } catch {
+      setFormStatus({
+        type: 'error',
+        message: `Network error. Please email me directly at ${personalInfo.email}.`,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -236,8 +266,8 @@ const Contact = () => {
                   </motion.div>
                 )}
 
-                <Button type="submit" variant="primary" className="w-full">
-                  Send Message
+                <Button type="submit" variant="primary" className="w-full" disabled={isSubmitting}>
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                   <Send size={18} />
                 </Button>
               </form>
