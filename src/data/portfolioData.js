@@ -13,7 +13,7 @@ export const personalInfo = {
   github: "https://github.com/Muhammadumerakmal",
   tagline: "Building AI products that survive beyond the demo stage.",
   description:
-    "I specialize in building scalable backend systems and integrating AI capabilities into products designed for production, not just presentations — using Node.js, Express, FastAPI, MongoDB, PostgreSQL, and modern LLM workflows.",
+    "I build scalable backend systems and integrate AI into products made for production — not just demos. My stack spans Node.js, Express, FastAPI, MongoDB, PostgreSQL, and modern LLM and agentic-AI workflows.",
 };
 
 // ---- Hero section --------------------------------------------------------
@@ -36,7 +36,7 @@ export const aboutContent = {
   mainText: "Most AI projects don't fail because the idea was bad.",
   subText: "They fail when it's time to move beyond the demo.",
   description:
-    "I specialize in building scalable backend systems and integrating AI capabilities into products designed for production, not just presentations. My focus is helping founders and teams avoid the bottlenecks, fragile AI integrations, and shortcuts that hold growing products back.",
+    "I specialize in scalable backend systems and production-grade AI integrations. I help founders and teams get past the point where most AI products stall — the demo — by designing architectures that stay fast, reliable, and maintainable as real users arrive.",
   coreTechLabel: "Core Technologies",
   highlights: [
     "Node.js",
@@ -86,7 +86,7 @@ export const experiences = [
     company: "FlyRank AI",
     role: "Back End Developer",
     description:
-      "Building backend systems and AI-powered features as part of the engineering team.",
+      "Developing backend services and AI-driven features for the platform as part of the core engineering team.",
     period: "Jun 2026 - Present",
     featured: true,
   },
@@ -95,7 +95,7 @@ export const experiences = [
     company: "Syntecxhub",
     role: "Back End Developer",
     description:
-      "Built and maintained scalable backend systems with Node.js and APIs, integrated AI features into workflows, optimized APIs for performance, and delivered production-ready solutions with remote teams.",
+      "Built and maintained scalable Node.js backends, integrated AI features into production workflows, and optimized APIs for performance and reliability alongside a distributed remote team.",
     period: "Apr 2026 - Present",
   },
   {
@@ -103,7 +103,7 @@ export const experiences = [
     company: "Governor Sindh Initiative (GenAI, Web3 & Metaverse)",
     role: "Full Stack Engineer",
     description:
-      "Built AI-powered applications and backend systems with Python and APIs, worked on LLM-based features and backend integration, and turned AI concepts into functional systems.",
+      "Built AI-powered applications and backend systems in Python, shipped LLM-based features, and turned experimental AI concepts into functional, integrated products.",
     period: "Feb 2024 - Present",
   },
   {
@@ -111,7 +111,7 @@ export const experiences = [
     company: "S.M.I.T (Saylani Mass I.T Training)",
     role: "Full-stack Developer",
     description:
-      "Built full-stack web apps with Node.js, React, and PostgreSQL, developed REST APIs and integrated third-party services, and worked on authentication, dashboards, and CRUD-based SaaS capstone projects.",
+      "Built full-stack applications with Node.js, React, and PostgreSQL — REST APIs, authentication, dashboards, and CRUD-based SaaS capstone projects.",
     period: "Mar 2025 - Present",
   },
   {
@@ -119,7 +119,7 @@ export const experiences = [
     company: "Synent Technologies",
     role: "Python Developer",
     description:
-      "Contributed to backend development and AI-powered system integrations, building automation workflows and API-based architectures for real-world use cases.",
+      "Contributed to backend development and AI system integrations, building automation workflows and API-driven architectures for real-world use cases.",
     period: "Apr 2026 - Present",
   },
   {
@@ -127,7 +127,7 @@ export const experiences = [
     company: "Arch Technologies",
     role: "AI & Backend Developer Intern",
     description:
-      "Built and tested Python and Node.js backend services, worked with APIs, databases, and cloud deployment, and developed AI and automation features for internal tools.",
+      "Built and tested Python and Node.js backend services across APIs, databases, and cloud deployment, and shipped AI and automation features for internal tools.",
     period: "Apr 2026 - Present",
   },
   {
@@ -135,7 +135,7 @@ export const experiences = [
     company: "Nexe-Agent",
     role: "Full-stack Developer",
     description:
-      "Developed full-stack features across the product as part of a remote engineering team.",
+      "Delivered full-stack features across the product within a fast-moving remote engineering team.",
     period: "Apr 2026 - Jun 2026",
   },
   {
@@ -143,7 +143,7 @@ export const experiences = [
     company: "Black Ink Motion",
     role: "Business Development Specialist",
     description:
-      "Driving business development initiatives for a US-based team.",
+      "Leading business development initiatives for a US-based team, connecting technical capability with client needs.",
     period: "Jun 2026 - Present",
   },
 ];
@@ -206,60 +206,60 @@ export const projects = [
     id: 1,
     title: "AI Soft",
     description:
-      "Full-stack AI-powered web application built with a modern TypeScript stack and deployed on Vercel.",
-    tech: ["TypeScript", "React", "AI"],
+      "A full-stack AI SaaS application with a modern TypeScript front end and an AI-powered backend, shipped to production on Vercel.",
+    tech: ["TypeScript", "React", "Node.js", "OpenAI API"],
     github: "https://github.com/Muhammadumerakmal/ai-soft",
     demo: "https://ai-soft-frontend.vercel.app",
     featured: true,
   },
   {
     id: 2,
-    title: "AI Clinic (SDD)",
+    title: "AI Clinic",
     description:
-      "AI-assisted clinic application built with a spec-driven development workflow, live on Vercel.",
-    tech: ["TypeScript", "React", "AI"],
+      "An AI-assisted clinic platform built with a spec-driven workflow, bringing intelligent patient interactions to a clean, responsive UI. Live on Vercel.",
+    tech: ["TypeScript", "React", "AI", "Vercel"],
     github: "https://github.com/Muhammadumerakmal/ai-clininc-sdd",
     demo: "https://ai-clininc-sdd-ten.vercel.app",
     featured: false,
   },
   {
     id: 3,
-    title: "AI-Powered Freelancer Platform",
+    title: "OpenAI Agents SDK Suite",
     description:
-      "Platform connecting freelancers and clients with AI-driven matching and workflow automation.",
-    tech: ["Python", "AI", "Automation"],
-    github: "https://github.com/Muhammadumerakmal/ai-powered-freelancer-platform",
+      "A collection of agentic AI systems built on the OpenAI Agents SDK — tool-using agents, multi-step workflows, and LLM orchestration in Python.",
+    tech: ["Python", "OpenAI Agents SDK", "LLM", "Agentic AI"],
+    github: "https://github.com/Muhammadumerakmal/openai-agents-sdk-all-work",
     demo: "",
     featured: false,
   },
   {
     id: 4,
-    title: "CoreEd Arch Backend",
+    title: "AI-Powered Freelancer Platform",
     description:
-      "Backend architecture for an education platform, built with Node.js and a scalable API design.",
-    tech: ["JavaScript", "Node.js", "REST API"],
-    github: "https://github.com/Muhammadumerakmal/coreed-arch-backend",
+      "A freelancing platform that uses AI to match clients with the right talent and automate parts of the hiring and project workflow.",
+    tech: ["AI", "Automation", "Full Stack"],
+    github: "https://github.com/Muhammadumerakmal/ai-powered-freelancer-platform",
     demo: "",
     featured: false,
   },
   {
     id: 5,
-    title: "UMS",
+    title: "CoreEd Backend",
     description:
-      "TypeScript application implementing a management system with a typed, component-based architecture.",
-    tech: ["TypeScript", "React"],
-    github: "https://github.com/Muhammadumerakmal/ums",
+      "A scalable backend for an online education platform — REST APIs, authentication, and data models built on Node.js and Express.",
+    tech: ["Node.js", "Express", "MongoDB", "REST API"],
+    github: "https://github.com/Muhammadumerakmal/coreed-backend-latest",
     demo: "",
     featured: false,
   },
   {
     id: 6,
-    title: "n8n Local Workflows",
+    title: "Coding Night Web App",
     description:
-      "Collection of self-hosted n8n automation workflows for local task orchestration and integrations.",
-    tech: ["n8n", "Automation", "Workflows"],
-    github: "https://github.com/Muhammadumerakmal/n8n-local-workflows",
-    demo: "",
+      "A polished, production-deployed web app built for the Coding Night showcase and shipped end to end with a modern TypeScript stack.",
+    tech: ["TypeScript", "React", "Tailwind CSS"],
+    github: "https://github.com/Muhammadumerakmal/coding-night-final-umer-web-dev",
+    demo: "https://coding-night-final-umer-web-dev.vercel.app",
     featured: false,
   },
 ];
