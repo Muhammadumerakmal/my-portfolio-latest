@@ -57,7 +57,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 px-6 md:px-12 bg-surface/50">
+    <section id="contact" className="py-20 md:py-32 px-6 md:px-12 bg-surface/50">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -73,7 +73,7 @@ const Contact = () => {
             <Mail size={16} className="text-primary" />
             <span className="text-sm font-medium text-primary">{contactMeta.badge}</span>
           </motion.div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
             {contactMeta.title} <span className="text-primary">{contactMeta.titleAccent}</span>
           </h2>
           <p className="text-lg text-muted max-w-2xl mx-auto">

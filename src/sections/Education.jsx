@@ -5,7 +5,7 @@ import Card from '../components/Card';
 
 const Education = () => {
   return (
-    <section id="education" className="py-32 px-6 md:px-12">
+    <section id="education" className="py-20 md:py-32 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -21,7 +21,7 @@ const Education = () => {
             <GraduationCap size={16} className="text-primary" />
             <span className="text-sm font-medium text-primary">Learning Journey</span>
           </motion.div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
             Education & <span className="text-primary">Certifications</span>
           </h2>
         </motion.div>

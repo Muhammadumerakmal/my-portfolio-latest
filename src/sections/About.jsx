@@ -1,11 +1,37 @@
-import { motion } from 'framer-motion';
+import { useRef, useEffect } from 'react';
+import { motion, useInView, animate } from 'framer-motion';
 import { aboutContent } from '../data/portfolioData';
 import { iconMap } from '../data/icons';
 import Card from '../components/Card';
 
+// Counts up from 0 to the number in `value` once scrolled into view,
+// preserving any suffix like "+" or "%".
+const CountUp = ({ value }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const parts = String(value).match(/^(\d+)(.*)$/);
+  const target = parts ? parseInt(parts[1], 10) : null;
+  const suffix = parts ? parts[2] : '';
+
+  useEffect(() => {
+    if (!inView || target === null || !ref.current) return;
+    const node = ref.current;
+    const controls = animate(0, target, {
+      duration: 1.2,
+      ease: 'easeOut',
+      onUpdate: (v) => {
+        node.textContent = `${Math.round(v)}${suffix}`;
+      },
+    });
+    return () => controls.stop();
+  }, [inView, target, suffix]);
+
+  return <span ref={ref}>{target === null ? value : `0${suffix}`}</span>;
+};
+
 const About = () => {
   return (
-    <section id="about" className="py-32 px-6 md:px-12 relative">
+    <section id="about" className="py-20 md:py-32 px-6 md:px-12 relative">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -14,7 +40,7 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
             {aboutContent.title} <span className="text-primary">{aboutContent.titleAccent}</span>
           </h2>
         </motion.div>
@@ -73,13 +99,13 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
               >
-                <Card className="p-8 text-center" glow>
+                <Card className="p-6 md:p-8 text-center" glow>
                   <motion.h3
                     className="text-4xl md:text-5xl font-bold text-primary mb-2"
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                   >
-                    {stat.number}
+                    <CountUp value={stat.number} />
                   </motion.h3>
                   <p className="text-sm text-muted">{stat.label}</p>
                 </Card>

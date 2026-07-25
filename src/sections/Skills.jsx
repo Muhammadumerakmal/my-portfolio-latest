@@ -13,7 +13,7 @@ const skillCategories = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-32 px-6 md:px-12">
+    <section id="skills" className="py-20 md:py-32 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,7 +29,7 @@ const Skills = () => {
             <Code2 size={16} className="text-primary" />
             <span className="text-sm font-medium text-primary">Technical Expertise</span>
           </motion.div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
             Skills & <span className="text-primary">Technologies</span>
           </h2>
           <p className="text-lg text-muted max-w-2xl mx-auto">

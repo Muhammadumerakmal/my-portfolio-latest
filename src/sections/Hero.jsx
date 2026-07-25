@@ -91,7 +91,7 @@ const Hero = () => {
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           {/* Left Side - Info */}
           <div className="text-left space-y-8">
             <motion.div
@@ -107,7 +107,7 @@ const Hero = () => {
                 <span className="text-sm font-medium text-primary">{hero.badge}</span>
               </motion.div>
 
-              <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight">
                 <motion.span
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -159,7 +159,7 @@ const Hero = () => {
               transition={{ delay: 0.3, duration: 0.7 }}
               className="space-y-6"
             >
-              <h2 className="text-5xl md:text-7xl font-bold leading-tight">
+              <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight">
                 {hero.headlineLines.map((line, i) => (
                   <motion.span
                     key={i}

@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 const Button = ({ children, variant = 'primary', className = '', onClick, href }) => {
   const baseStyles = 'px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 inline-flex items-center gap-2';
@@ -6,16 +7,39 @@ const Button = ({ children, variant = 'primary', className = '', onClick, href }
   const variants = {
     primary: 'bg-primary text-black hover:bg-primary/90 glow-border hover:shadow-lg hover:shadow-primary/20',
     secondary: 'bg-card text-white border border-white/10 hover:border-primary/50 hover:bg-card/80',
-    ghost: 'text-white hover:text-primary border border-white/10 hover:border-primary/50'
+    ghost: 'text-white hover:text-primary border border-white/10 hover:border-primary/50',
   };
 
   const buttonClass = `${baseStyles} ${variants[variant]} ${className}`;
 
-  const ButtonContent = () => (
+  // Magnetic pull toward the cursor, spring-smoothed.
+  const ref = useRef(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 300, damping: 20 });
+  const springY = useSpring(y, { stiffness: 300, damping: 20 });
+
+  const handleMove = (e) => {
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    x.set((e.clientX - (rect.left + rect.width / 2)) * 0.3);
+    y.set((e.clientY - (rect.top + rect.height / 2)) * 0.3);
+  };
+
+  const reset = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  const button = (
     <motion.button
+      ref={ref}
       className={buttonClass}
       onClick={onClick}
-      whileHover={{ scale: 1.05, y: -2 }}
+      onMouseMove={handleMove}
+      onMouseLeave={reset}
+      style={{ x: springX, y: springY }}
+      whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       transition={{ type: 'spring', stiffness: 400, damping: 17 }}
     >
@@ -26,12 +50,12 @@ const Button = ({ children, variant = 'primary', className = '', onClick, href }
   if (href) {
     return (
       <a href={href} className="inline-block">
-        <ButtonContent />
+        {button}
       </a>
     );
   }
 
-  return <ButtonContent />;
+  return button;
 };
 
 export default Button;

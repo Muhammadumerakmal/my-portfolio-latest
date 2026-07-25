@@ -1,5 +1,7 @@
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollProgress from './components/ScrollProgress';
+import CursorGlow from './components/CursorGlow';
 import Hero from './sections/Hero';
 import About from './sections/About';
 import Experience from './sections/Experience';
@@ -11,6 +13,8 @@ import Contact from './sections/Contact';
 function App() {
   return (
     <div className="relative overflow-hidden">
+      <ScrollProgress />
+      <CursorGlow />
       <Navbar />
       <main>
         <Hero />
