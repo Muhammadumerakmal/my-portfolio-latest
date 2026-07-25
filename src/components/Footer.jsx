@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
-import { Mail, Heart, ExternalLink } from 'lucide-react';
-import { personalInfo } from '../data/portfolioData';
+import { Heart } from 'lucide-react';
+import { personalInfo, footerContent, navigation } from '../data/portfolioData';
+import { iconMap } from '../data/icons';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const quickLinks = navigation.filter((item) => item.name !== 'Home');
 
   return (
     <footer className="py-12 px-6 md:px-12 border-t border-white/5">
@@ -17,10 +19,10 @@ const Footer = () => {
             transition={{ duration: 0.5 }}
           >
             <h3 className="text-2xl font-bold mb-2">
-              <span className="text-primary">Umar</span> Akmal
+              <span className="text-primary">{footerContent.brandAccent}</span> {footerContent.brandRest}
             </h3>
             <p className="text-sm text-muted leading-relaxed">
-              Building scalable systems and AI-powered applications that make a difference.
+              {footerContent.tagline}
             </p>
           </motion.div>
 
@@ -33,13 +35,13 @@ const Footer = () => {
           >
             <h4 className="text-sm font-semibold mb-4 text-white">Quick Links</h4>
             <ul className="space-y-2">
-              {['About', 'Experience', 'Projects', 'Skills', 'Contact'].map((item) => (
-                <li key={item}>
+              {quickLinks.map((item) => (
+                <li key={item.name}>
                   <a
-                    href={`#${item.toLowerCase()}`}
+                    href={item.href}
                     className="text-sm text-muted hover:text-primary transition-colors"
                   >
-                    {item}
+                    {item.name}
                   </a>
                 </li>
               ))}
@@ -55,34 +57,23 @@ const Footer = () => {
           >
             <h4 className="text-sm font-semibold mb-4 text-white">Connect</h4>
             <div className="flex gap-4">
-              <motion.a
-                href={`mailto:${personalInfo.email}`}
-                className="p-3 bg-card rounded-xl border border-white/10 hover:border-primary/50 transition-all"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Mail size={20} className="text-muted hover:text-primary transition-colors" />
-              </motion.a>
-              <motion.a
-                href={`https://${personalInfo.linkedin}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-card rounded-xl border border-white/10 hover:border-primary/50 transition-all"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <ExternalLink size={20} className="text-muted hover:text-primary transition-colors" />
-              </motion.a>
-              <motion.a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-card rounded-xl border border-white/10 hover:border-primary/50 transition-all"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <ExternalLink size={20} className="text-muted hover:text-primary transition-colors" />
-              </motion.a>
+              {footerContent.socials.map((social) => {
+                const Icon = iconMap[social.icon];
+                return (
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="p-3 bg-card rounded-xl border border-white/10 hover:border-primary/50 transition-all"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Icon size={20} className="text-muted hover:text-primary transition-colors" />
+                  </motion.a>
+                );
+              })}
             </div>
           </motion.div>
         </div>
@@ -96,12 +87,12 @@ const Footer = () => {
           className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4"
         >
           <p className="text-sm text-muted flex items-center gap-2">
-            © {currentYear} Muhammed Umar Akmal. Built with
+            © {currentYear} {personalInfo.name}. Built with
             <Heart size={14} className="text-primary inline" fill="currentColor" />
             and React
           </p>
           <p className="text-sm text-muted">
-            Designed & Developed with passion
+            {footerContent.bottomNote}
           </p>
         </motion.div>
       </div>

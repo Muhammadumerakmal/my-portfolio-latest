@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Code2, Rocket } from 'lucide-react';
-import { projects } from '../data/portfolioData';
+import { projects, projectsMeta } from '../data/portfolioData';
 import Card from '../components/Card';
 
 const Projects = () => {
@@ -19,13 +19,13 @@ const Projects = () => {
             whileHover={{ scale: 1.05 }}
           >
             <Rocket size={16} className="text-primary" />
-            <span className="text-sm font-medium text-primary">Featured Work</span>
+            <span className="text-sm font-medium text-primary">{projectsMeta.badge}</span>
           </motion.div>
           <h2 className="text-4xl md:text-6xl font-bold mb-4">
-            Selected <span className="text-primary">Projects</span>
+            {projectsMeta.title} <span className="text-primary">{projectsMeta.titleAccent}</span>
           </h2>
           <p className="text-lg text-muted max-w-2xl mx-auto">
-            Production-ready applications showcasing AI integration, scalable architecture, and modern web technologies
+            {projectsMeta.subtitle}
           </p>
         </motion.div>
 
@@ -89,16 +89,18 @@ const Projects = () => {
                     <Code2 size={18} />
                     <span>Code</span>
                   </motion.a>
-                  <motion.a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors"
-                    whileHover={{ x: 3 }}
-                  >
-                    <ExternalLink size={18} />
-                    <span>Live Demo</span>
-                  </motion.a>
+                  {project.demo && (
+                    <motion.a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors"
+                      whileHover={{ x: 3 }}
+                    >
+                      <ExternalLink size={18} />
+                      <span>Live Demo</span>
+                    </motion.a>
+                  )}
                 </div>
               </Card>
             </motion.div>
@@ -114,14 +116,14 @@ const Projects = () => {
           className="text-center mt-12"
         >
           <motion.a
-            href="https://github.com"
+            href={projectsMeta.viewAllUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-card border border-white/10 hover:border-primary/50 transition-all text-sm font-medium"
             whileHover={{ scale: 1.05, y: -2 }}
           >
             <Code2 size={18} />
-            <span>View All Projects on GitHub</span>
+            <span>{projectsMeta.viewAllLabel}</span>
             <ExternalLink size={16} />
           </motion.a>
         </motion.div>

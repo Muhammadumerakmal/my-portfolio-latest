@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { Zap, Bot, Rocket } from 'lucide-react';
 import { aboutContent } from '../data/portfolioData';
+import { iconMap } from '../data/icons';
 import Card from '../components/Card';
 
 const About = () => {
@@ -15,7 +15,7 @@ const About = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-4">
-            About <span className="text-primary">Me</span>
+            {aboutContent.title} <span className="text-primary">{aboutContent.titleAccent}</span>
           </h2>
         </motion.div>
 
@@ -43,7 +43,7 @@ const About = () => {
 
             <div className="pt-6">
               <h4 className="text-sm font-semibold text-muted uppercase tracking-wider mb-4">
-                Core Technologies
+                {aboutContent.coreTechLabel}
               </h4>
               <div className="flex flex-wrap gap-3">
                 {aboutContent.highlights.map((tech, index) => (
@@ -65,18 +65,13 @@ const About = () => {
 
           {/* Right Side - Highlight Cards */}
           <div className="grid grid-cols-2 gap-4">
-            {[
-              { number: '5+', label: 'Years Experience', delay: 0 },
-              { number: '20+', label: 'Projects Completed', delay: 0.1 },
-              { number: '10+', label: 'Technologies', delay: 0.2 },
-              { number: '100%', label: 'Client Satisfaction', delay: 0.3 },
-            ].map((stat, index) => (
+            {aboutContent.stats.map((stat, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: stat.delay, duration: 0.5 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
               >
                 <Card className="p-8 text-center" glow>
                   <motion.h3
@@ -95,27 +90,8 @@ const About = () => {
 
         {/* Bottom Feature Cards */}
         <div className="grid md:grid-cols-3 gap-6 mt-16">
-          {[
-            {
-              title: 'Backend Architecture',
-              description: 'Scalable systems with Node.js, FastAPI, and microservices patterns.',
-              icon: Zap,
-              color: 'text-yellow-400',
-            },
-            {
-              title: 'AI Integration',
-              description: 'Advanced AI features with OpenAI, RAG systems, and automation workflows.',
-              icon: Bot,
-              color: 'text-primary',
-            },
-            {
-              title: 'Full Stack Development',
-              description: 'End-to-end solutions with MERN stack, modern UI, and production deployment.',
-              icon: Rocket,
-              color: 'text-blue-400',
-            },
-          ].map((feature, index) => {
-            const Icon = feature.icon;
+          {aboutContent.features.map((feature, index) => {
+            const Icon = iconMap[feature.icon];
             return (
               <motion.div
                 key={index}

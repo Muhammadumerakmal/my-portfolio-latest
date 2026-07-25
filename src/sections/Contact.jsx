@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Link2, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
-import { personalInfo } from '../data/portfolioData';
+import { personalInfo, contactMeta } from '../data/portfolioData';
 import Card from '../components/Card';
 import Button from '../components/Button';
 
@@ -71,13 +71,13 @@ const Contact = () => {
             whileHover={{ scale: 1.05 }}
           >
             <Mail size={16} className="text-primary" />
-            <span className="text-sm font-medium text-primary">Get In Touch</span>
+            <span className="text-sm font-medium text-primary">{contactMeta.badge}</span>
           </motion.div>
           <h2 className="text-4xl md:text-6xl font-bold mb-4">
-            Let's Work <span className="text-primary">Together</span>
+            {contactMeta.title} <span className="text-primary">{contactMeta.titleAccent}</span>
           </h2>
           <p className="text-lg text-muted max-w-2xl mx-auto">
-            Have a project in mind? Let's discuss how we can bring your ideas to life with scalable technology and AI-powered solutions.
+            {contactMeta.subtitle}
           </p>
         </motion.div>
 
@@ -144,13 +144,7 @@ const Contact = () => {
             <Card className="p-8">
               <h3 className="text-xl font-bold mb-4">Available For</h3>
               <div className="space-y-3">
-                {[
-                  'Full-time opportunities',
-                  'Freelance projects',
-                  'Technical consulting',
-                  'AI integration projects',
-                  'Backend architecture',
-                ].map((item, index) => (
+                {contactMeta.availableFor.map((item, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}

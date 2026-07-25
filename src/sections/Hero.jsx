@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react';
 import Button from '../components/Button';
-import { personalInfo } from '../data/portfolioData';
+import { personalInfo, hero } from '../data/portfolioData';
 
 const Hero = () => {
   return (
@@ -48,7 +48,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
               >
                 <Sparkles size={16} className="text-primary" />
-                <span className="text-sm font-medium text-primary">Available for Work</span>
+                <span className="text-sm font-medium text-primary">{hero.badge}</span>
               </motion.div>
 
               <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight">
@@ -85,13 +85,12 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
               >
-                <Button href="#projects" variant="primary">
-                  View Projects
-                  <ArrowRight size={20} />
-                </Button>
-                <Button href="#contact" variant="secondary">
-                  Contact Me
-                </Button>
+                {hero.buttons.map((btn) => (
+                  <Button key={btn.label} href={btn.href} variant={btn.variant}>
+                    {btn.label}
+                    {btn.variant === 'primary' && <ArrowRight size={20} />}
+                  </Button>
+                ))}
               </motion.div>
             </motion.div>
           </div>
@@ -105,30 +104,17 @@ const Hero = () => {
               className="space-y-6"
             >
               <h2 className="text-5xl md:text-7xl font-bold leading-tight">
-                <motion.span
-                  className="block"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  Building the
-                </motion.span>
-                <motion.span
-                  className="block text-primary glow-text"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  Web,
-                </motion.span>
-                <motion.span
-                  className="block"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                >
-                  Cinematically.
-                </motion.span>
+                {hero.headlineLines.map((line, i) => (
+                  <motion.span
+                    key={i}
+                    className={`block ${i === hero.headlineAccentLine ? 'text-primary glow-text' : ''}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 + i * 0.1 }}
+                  >
+                    {line}
+                  </motion.span>
+                ))}
               </h2>
 
               <motion.p
