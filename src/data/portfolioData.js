@@ -5,22 +5,22 @@
 // ============================================================================
 
 export const personalInfo = {
-  name: "Muhammed Umar Akmal",
-  title: "Agentic AI Engineer & Full Stack Developer",
-  location: "Karachi, Pakistan",
+  name: "Muhammad Umar Akmal",
+  title: "Agentic AI Engineer & Backend Developer",
+  location: "Karachi, Sindh, Pakistan",
   email: "umeraura99@gmail.com",
   linkedin: "linkedin.com/in/umar-backend-engineer",
   github: "https://github.com/Muhammadumerakmal",
-  tagline: "Building the Web, Cinematically.",
+  tagline: "Building AI products that survive beyond the demo stage.",
   description:
-    "I build scalable backend systems, AI-powered applications, and production-ready web experiences using MERN, FastAPI, Docker, APIs, and modern AI workflows.",
+    "I specialize in building scalable backend systems and integrating AI capabilities into products designed for production, not just presentations — using Node.js, Express, FastAPI, MongoDB, PostgreSQL, and modern LLM workflows.",
 };
 
 // ---- Hero section --------------------------------------------------------
 export const hero = {
   badge: "Available for Work",
   // The large right-side headline, one array item per line:
-  headlineLines: ["Building the", "Web,", "Cinematically."],
+  headlineLines: ["Building AI products", "that survive beyond", "the demo stage."],
   // The line index that gets the primary/glow color (0-based):
   headlineAccentLine: 1,
   buttons: [
@@ -33,10 +33,10 @@ export const hero = {
 export const aboutContent = {
   title: "About",
   titleAccent: "Me",
-  mainText: "Most startups do not fail because of bad ideas.",
-  subText: "They fail because their systems cannot scale.",
+  mainText: "Most AI projects don't fail because the idea was bad.",
+  subText: "They fail when it's time to move beyond the demo.",
   description:
-    "I help founders and startups transform ideas into production-ready applications through scalable backend architecture, AI integrations, automation workflows, and modern web technologies.",
+    "I specialize in building scalable backend systems and integrating AI capabilities into products designed for production, not just presentations. My focus is helping founders and teams avoid the bottlenecks, fragile AI integrations, and shortcuts that hold growing products back.",
   coreTechLabel: "Core Technologies",
   highlights: [
     "Node.js",
@@ -49,10 +49,10 @@ export const aboutContent = {
   ],
   // NOTE: adjust these numbers to your real figures.
   stats: [
-    { number: "9+", label: "GitHub Projects" },
+    { number: "8+", label: "Roles & Internships" },
     { number: "2+", label: "Years Experience" },
-    { number: "10+", label: "Technologies" },
-    { number: "5+", label: "Certifications" },
+    { number: "9+", label: "GitHub Projects" },
+    { number: "4+", label: "Certifications" },
   ],
   features: [
     {
@@ -83,44 +83,68 @@ export const aboutContent = {
 export const experiences = [
   {
     id: 1,
-    company: "Syntecxhub",
+    company: "FlyRank AI",
     role: "Back End Developer",
     description:
-      "Built scalable backend systems, optimized APIs, and integrated AI features into production workflows.",
-    period: "2024 - Present",
+      "Building backend systems and AI-powered features as part of the engineering team.",
+    period: "Jun 2026 - Present",
     featured: true,
   },
   {
     id: 2,
-    company: "Synent Technologies",
-    role: "Python Developer",
+    company: "Syntecxhub",
+    role: "Back End Developer",
     description:
-      "Worked on automation systems, AI integrations, APIs, and backend architecture.",
-    period: "2024",
+      "Built and maintained scalable backend systems with Node.js and APIs, integrated AI features into workflows, optimized APIs for performance, and delivered production-ready solutions with remote teams.",
+    period: "Apr 2026 - Present",
   },
   {
     id: 3,
-    company: "Arch Technologies",
-    role: "AI & Backend Developer Intern",
+    company: "Governor Sindh Initiative (GenAI, Web3 & Metaverse)",
+    role: "Full Stack Engineer",
     description:
-      "Worked with Python, Node.js, APIs, databases, and deployment workflows.",
-    period: "2023 - 2024",
+      "Built AI-powered applications and backend systems with Python and APIs, worked on LLM-based features and backend integration, and turned AI concepts into functional systems.",
+    period: "Feb 2024 - Present",
   },
   {
     id: 4,
-    company: "Governor Sindh Initiative",
-    role: "Full Stack Engineer",
+    company: "S.M.I.T (Saylani Mass I.T Training)",
+    role: "Full-stack Developer",
     description:
-      "Built AI-powered applications and backend systems using Python and modern APIs.",
-    period: "2023",
+      "Built full-stack web apps with Node.js, React, and PostgreSQL, developed REST APIs and integrated third-party services, and worked on authentication, dashboards, and CRUD-based SaaS capstone projects.",
+    period: "Mar 2025 - Present",
   },
   {
     id: 5,
-    company: "SMIT",
-    role: "Full Stack Developer",
+    company: "Synent Technologies",
+    role: "Python Developer",
     description:
-      "Developed full-stack applications using React, Node.js, PostgreSQL, dashboards, and SaaS systems.",
-    period: "2023",
+      "Contributed to backend development and AI-powered system integrations, building automation workflows and API-based architectures for real-world use cases.",
+    period: "Apr 2026 - Present",
+  },
+  {
+    id: 6,
+    company: "Arch Technologies",
+    role: "AI & Backend Developer Intern",
+    description:
+      "Built and tested Python and Node.js backend services, worked with APIs, databases, and cloud deployment, and developed AI and automation features for internal tools.",
+    period: "Apr 2026 - Present",
+  },
+  {
+    id: 7,
+    company: "Nexe-Agent",
+    role: "Full-stack Developer",
+    description:
+      "Developed full-stack features across the product as part of a remote engineering team.",
+    period: "Apr 2026 - Jun 2026",
+  },
+  {
+    id: 8,
+    company: "Black Ink Motion",
+    role: "Business Development Specialist",
+    description:
+      "Driving business development initiatives for a US-based team.",
+    period: "Jun 2026 - Present",
   },
 ];
 
@@ -129,12 +153,12 @@ export const education = [
   {
     id: 1,
     institution: "freeCodeCamp",
-    year: "2025",
+    year: "Feb 2025",
     type: "certification",
   },
   {
     id: 2,
-    institution: "Board of Secondary Education Karachi",
+    institution: "Board of Secondary Education, Karachi",
     year: "2023 - 2025",
     field: "Biology",
     type: "secondary",
@@ -142,15 +166,15 @@ export const education = [
 ];
 
 export const certifications = [
-  "Cisco Content Networking Specialist",
+  "Cisco Content Networking Specialist Certification",
   "Anthropic Education",
   "Coding Night",
   "Modern Web and App Development with AI",
 ];
 
 export const languages = [
-  { name: "English", level: "Professional" },
-  { name: "Urdu", level: "Native" },
+  { name: "English", level: "Professional Working" },
+  { name: "Urdu", level: "Full Professional" },
 ];
 
 // ---- Skills section ------------------------------------------------------
