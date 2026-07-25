@@ -40,7 +40,7 @@ const Projects = () => {
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className={project.featured ? 'md:col-span-2 md:row-span-2' : ''}
             >
-              <Card className={`p-8 h-full flex flex-col ${project.featured ? 'glow-border' : ''}`} glow={project.featured}>
+              <Card className={`p-8 h-full flex flex-col ${project.featured ? 'glow-border' : ''}`} glow={project.featured} tilt>
                 <div className="flex-1">
                   {project.featured && (
                     <motion.span
