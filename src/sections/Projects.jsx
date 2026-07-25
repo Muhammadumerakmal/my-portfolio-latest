@@ -41,6 +41,16 @@ const Projects = () => {
               className={project.featured ? 'md:col-span-2 md:row-span-2' : ''}
             >
               <Card className={`p-8 h-full flex flex-col ${project.featured ? 'glow-border' : ''}`} glow={project.featured} tilt>
+                {project.image && (
+                  <div className="-mx-8 -mt-8 mb-6 overflow-hidden border-b border-white/5">
+                    <img
+                      src={project.image}
+                      alt={`${project.title} preview`}
+                      loading="lazy"
+                      className={`w-full object-cover object-center ${project.featured ? 'h-56' : 'h-40'}`}
+                    />
+                  </div>
+                )}
                 <div className="flex-1">
                   {project.featured && (
                     <motion.span

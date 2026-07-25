@@ -217,6 +217,7 @@ export const projects = [
     tech: ["TypeScript", "React", "Node.js", "OpenAI API"],
     github: "https://github.com/Muhammadumerakmal/ai-soft",
     demo: "https://ai-soft-frontend.vercel.app",
+    image: "/projects/ai-soft.png",
     featured: true,
   },
   {
@@ -227,6 +228,7 @@ export const projects = [
     tech: ["TypeScript", "React", "AI", "Vercel"],
     github: "https://github.com/Muhammadumerakmal/ai-clininc-sdd",
     demo: "https://ai-clininc-sdd-ten.vercel.app",
+    image: "/projects/ai-clinic.png",
     featured: false,
   },
   {
@@ -267,6 +269,7 @@ export const projects = [
     tech: ["TypeScript", "React", "Tailwind CSS"],
     github: "https://github.com/Muhammadumerakmal/coding-night-final-umer-web-dev",
     demo: "https://coding-night-final-umer-web-dev.vercel.app",
+    image: "/projects/coding-night.png",
     featured: false,
   },
 ];
