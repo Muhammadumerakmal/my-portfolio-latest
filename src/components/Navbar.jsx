@@ -95,6 +95,8 @@ const Navbar = () => {
       >
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMobileMenuOpen}
           className="glass p-3 rounded-full border border-white/10 glow-border"
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

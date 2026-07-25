@@ -180,8 +180,8 @@ export const certifications = [
 ];
 
 export const languages = [
-  { name: "English", level: "Professional Working" },
-  { name: "Urdu", level: "Full Professional" },
+  { name: "English", level: "Professional Working", proficiency: 90 },
+  { name: "Urdu", level: "Full Professional", proficiency: 100 },
 ];
 
 // ---- Skills section ------------------------------------------------------

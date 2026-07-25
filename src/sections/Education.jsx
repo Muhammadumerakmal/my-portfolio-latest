@@ -122,7 +122,7 @@ const Education = () => {
                       <motion.div
                         className="h-full bg-gradient-to-r from-primary to-primary/50"
                         initial={{ width: 0 }}
-                        whileInView={{ width: lang.level === 'Native' ? '100%' : '90%' }}
+                        whileInView={{ width: `${lang.proficiency}%` }}
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 + 0.3, duration: 0.8 }}
                       />
