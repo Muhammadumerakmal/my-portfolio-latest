@@ -19,6 +19,13 @@ export const personalInfo = {
 // ---- Hero section --------------------------------------------------------
 export const hero = {
   badge: "Available for Work",
+  // Rotating job titles typed out under the name (edit freely):
+  roles: [
+    "Agentic AI Engineer",
+    "Backend Developer",
+    "Full-Stack Engineer",
+    "AI Automation Builder",
+  ],
   // The large right-side headline, one array item per line:
   headlineLines: ["Building AI products", "that survive beyond", "the demo stage."],
   // The line index that gets the primary/glow color (0-based):

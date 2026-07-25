@@ -1,11 +1,67 @@
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
 import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react';
 import Button from '../components/Button';
 import { personalInfo, hero } from '../data/portfolioData';
 
-const Hero = () => {
+// Types out and deletes each role in a loop.
+const TypewriterRoles = ({ roles }) => {
+  const [index, setIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    if (!roles.length) return;
+    const current = roles[index];
+    const atEnd = !deleting && subIndex === current.length;
+    const atStart = deleting && subIndex === 0;
+    const delay = atEnd ? 1500 : deleting ? 45 : 90;
+
+    const timeout = setTimeout(() => {
+      if (atEnd) {
+        setDeleting(true);
+      } else if (atStart) {
+        setDeleting(false);
+        setIndex((i) => (i + 1) % roles.length);
+      } else {
+        setSubIndex((s) => s + (deleting ? -1 : 1));
+      }
+    }, delay);
+    return () => clearTimeout(timeout);
+  }, [subIndex, deleting, index, roles]);
+
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden px-6 md:px-12 py-20">
+    <span className="text-primary">
+      {roles[index].substring(0, subIndex)}
+      <span className="animate-pulse">|</span>
+    </span>
+  );
+};
+
+const Hero = () => {
+  const mouseX = useMotionValue(-500);
+  const mouseY = useMotionValue(-500);
+  const spotlight = useMotionTemplate`radial-gradient(500px circle at ${mouseX}px ${mouseY}px, rgba(163,255,18,0.10), transparent 70%)`;
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left);
+    mouseY.set(e.clientY - rect.top);
+  };
+
+  return (
+    <section
+      id="home"
+      onMouseMove={handleMouseMove}
+      className="min-h-screen flex items-center justify-center relative overflow-hidden px-6 md:px-12 py-20"
+    >
+      {/* Cursor-reactive spotlight */}
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{ background: spotlight }}
+      />
+
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -71,12 +127,12 @@ const Hero = () => {
               </h1>
 
               <motion.p
-                className="text-xl md:text-2xl text-muted font-light mb-8"
+                className="text-xl md:text-2xl text-muted font-light mb-8 min-h-[2rem]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                {personalInfo.title}
+                <TypewriterRoles roles={hero.roles} />
               </motion.p>
 
               <motion.div
