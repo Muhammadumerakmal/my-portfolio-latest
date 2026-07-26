@@ -5,7 +5,7 @@ import Card from '../components/Card';
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-20 md:py-32 px-6 md:px-12 bg-surface/50">
+    <section id="experience" className="scroll-mt-24 py-20 md:py-32 px-6 md:px-12 bg-surface/50">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

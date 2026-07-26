@@ -1,15 +1,19 @@
+import { lazy, Suspense } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import CursorGlow from './components/CursorGlow';
 import Hero from './sections/Hero';
-import About from './sections/About';
-import Experience from './sections/Experience';
-import Education from './sections/Education';
-import Projects from './sections/Projects';
-import Skills from './sections/Skills';
-import Contact from './sections/Contact';
+
+// Below-the-fold sections are code-split to keep the initial bundle small.
+const About = lazy(() => import('./sections/About'));
+const Services = lazy(() => import('./sections/Services'));
+const Experience = lazy(() => import('./sections/Experience'));
+const Education = lazy(() => import('./sections/Education'));
+const Projects = lazy(() => import('./sections/Projects'));
+const Skills = lazy(() => import('./sections/Skills'));
+const Contact = lazy(() => import('./sections/Contact'));
 
 function App() {
   return (
@@ -19,12 +23,15 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <About />
-        <Experience />
-        <Education />
-        <Projects />
-        <Skills />
-        <Contact />
+        <Suspense fallback={null}>
+          <About />
+          <Services />
+          <Experience />
+          <Education />
+          <Projects />
+          <Skills />
+          <Contact />
+        </Suspense>
       </main>
       <Footer />
       <Analytics />

@@ -88,6 +88,42 @@ export const aboutContent = {
   ],
 };
 
+// ---- Services section ----------------------------------------------------
+export const servicesMeta = {
+  badge: "What I Do",
+  title: "How I Can",
+  titleAccent: "Help",
+  subtitle:
+    "I help founders and teams turn ideas into production-ready products — backends that scale, AI that ships, and interfaces that convert.",
+};
+
+export const services = [
+  {
+    title: "Scalable Backend Development",
+    description:
+      "APIs and services built to stay fast and reliable under real traffic — Node.js, Express, and FastAPI with clean, maintainable architecture.",
+    icon: "Server",
+  },
+  {
+    title: "Agentic AI & LLM Integration",
+    description:
+      "Production AI features that go beyond the demo — OpenAI Agents SDK, LLM integration, RAG, and automation wired into real workflows.",
+    icon: "Bot",
+  },
+  {
+    title: "Full-Stack Web Apps",
+    description:
+      "End-to-end products with Next.js, React, and TypeScript — responsive, accessible, SEO-ready interfaces backed by solid data models.",
+    icon: "Layers",
+  },
+  {
+    title: "APIs, DevOps & Deployment",
+    description:
+      "REST API design with auth, rate limiting, and pagination — containerised with Docker and shipped via CI/CD for zero-downtime releases.",
+    icon: "Workflow",
+  },
+];
+
 // ---- Experience section --------------------------------------------------
 export const experiences = [
   {
@@ -290,6 +326,7 @@ export const footerContent = {
 export const navigation = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
+  { name: "Services", href: "#services" },
   { name: "Experience", href: "#experience" },
   { name: "Education", href: "#education" },
   { name: "Projects", href: "#projects" },

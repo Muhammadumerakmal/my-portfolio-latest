@@ -5,7 +5,7 @@ import Card from '../components/Card';
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 md:py-32 px-6 md:px-12 bg-surface/50">
+    <section id="projects" className="scroll-mt-24 py-20 md:py-32 px-6 md:px-12 bg-surface/50">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,6 +47,9 @@ const Projects = () => {
                       src={project.image}
                       alt={`${project.title} preview`}
                       loading="lazy"
+                      decoding="async"
+                      width={1280}
+                      height={800}
                       className={`w-full object-cover object-center ${project.featured ? 'h-56' : 'h-40'}`}
                     />
                   </div>

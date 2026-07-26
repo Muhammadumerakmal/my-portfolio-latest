@@ -31,7 +31,7 @@ const CountUp = ({ value }) => {
 
 const About = () => {
   return (
-    <section id="about" className="py-20 md:py-32 px-6 md:px-12 relative">
+    <section id="about" className="scroll-mt-24 py-20 md:py-32 px-6 md:px-12 relative">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
