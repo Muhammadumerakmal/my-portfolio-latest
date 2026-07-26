@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
@@ -26,6 +27,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <Analytics />
     </div>
   );
 }

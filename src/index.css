@@ -17,6 +17,17 @@
     scroll-behavior: smooth;
   }
 
+  /* Visible keyboard focus (keyboard users only; mouse hover is unaffected). */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid #a3ff12;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
   /* Respect users who prefer reduced motion. */
   @media (prefers-reduced-motion: reduce) {
     *,

@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
-const Button = ({ children, variant = 'primary', className = '', onClick, href, type, disabled = false }) => {
+const Button = ({ children, variant = 'primary', className = '', onClick, href, type, disabled = false, external = false }) => {
   const baseStyles = 'px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 inline-flex items-center gap-2';
 
   const variants = {
@@ -51,7 +51,11 @@ const Button = ({ children, variant = 'primary', className = '', onClick, href, 
 
   if (href) {
     return (
-      <a href={href} className="inline-block">
+      <a
+        href={href}
+        className="inline-block"
+        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      >
         {button}
       </a>
     );

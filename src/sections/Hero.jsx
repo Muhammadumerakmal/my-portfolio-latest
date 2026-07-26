@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
-import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react';
+import { ArrowRight, ChevronDown, Sparkles, FileText } from 'lucide-react';
 import Button from '../components/Button';
 import { personalInfo, hero } from '../data/portfolioData';
 
@@ -147,6 +147,12 @@ const Hero = () => {
                     {btn.variant === 'primary' && <ArrowRight size={20} />}
                   </Button>
                 ))}
+                {personalInfo.resumeUrl && (
+                  <Button href={personalInfo.resumeUrl} variant="ghost" external>
+                    <FileText size={18} />
+                    {personalInfo.resumeLabel}
+                  </Button>
+                )}
               </motion.div>
             </motion.div>
           </div>

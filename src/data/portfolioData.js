@@ -11,6 +11,8 @@ export const personalInfo = {
   email: "umeraura99@gmail.com",
   linkedin: "linkedin.com/in/umar-backend-engineer",
   github: "https://github.com/Muhammadumerakmal",
+  resumeUrl: "https://linkedin.com/in/umar-backend-engineer",
+  resumeLabel: "Résumé",
   tagline: "Building AI products that survive beyond the demo stage.",
   description:
     "I build scalable backend systems and integrate AI into products made for production — not just demos. My stack spans Node.js, Express, FastAPI, MongoDB, PostgreSQL, and modern LLM and agentic-AI workflows.",
