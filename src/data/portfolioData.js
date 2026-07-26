@@ -284,7 +284,7 @@ export const contactMeta = {
   // free form at https://formspree.io — the ID is the part after "/f/" in
   // your endpoint (e.g. "xldabcde"). Leave "" to show a direct-contact
   // notice instead of sending.
-  formspreeId: "",
+  formspreeId: "xjgnjvzz",
   badge: "Get In Touch",
   title: "Let's Work",
   titleAccent: "Together",
