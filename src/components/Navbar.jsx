@@ -43,22 +43,24 @@ const Navbar = () => {
   return (
     <>
       {/* Desktop Navbar */}
-      <motion.nav
-        className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:block transition-all duration-300 ${
+      <div
+        className={`fixed left-0 right-0 z-50 hidden lg:flex justify-center transition-all duration-300 ${
           isScrolled ? 'top-4' : 'top-6'
         }`}
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
       >
-        <div className="glass rounded-full px-6 py-3 border border-white/10 glow-border">
+        <motion.nav
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="glass rounded-full px-6 py-3 border border-white/10 glow-border">
           <ul className="flex items-center gap-1">
             {navigation.map((item, index) => (
               <motion.li
                 key={item.name}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.04 }}
               >
                 <a
                   href={item.href}
@@ -84,12 +86,13 @@ const Navbar = () => {
               </motion.li>
             ))}
           </ul>
-        </div>
-      </motion.nav>
+          </div>
+        </motion.nav>
+      </div>
 
       {/* Mobile Navbar */}
       <motion.div
-        className="fixed top-4 right-4 z-50 md:hidden"
+        className="fixed top-4 right-4 z-50 lg:hidden"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
       >
@@ -107,7 +110,7 @@ const Navbar = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 md:hidden"
+            className="fixed inset-0 z-40 lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

@@ -91,9 +91,9 @@ const Hero = () => {
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
-        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left Side - Info */}
-          <div className="text-left space-y-8">
+          <div className="text-left space-y-8 min-w-0">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -136,7 +136,7 @@ const Hero = () => {
               </motion.p>
 
               <motion.div
-                className="flex flex-wrap gap-4"
+                className="flex flex-col sm:flex-row sm:flex-wrap gap-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
@@ -165,7 +165,7 @@ const Hero = () => {
               transition={{ delay: 0.3, duration: 0.7 }}
               className="space-y-6"
             >
-              <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight">
+              <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight">
                 {hero.headlineLines.map((line, i) => (
                   <motion.span
                     key={i}
