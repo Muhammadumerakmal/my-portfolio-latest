@@ -11,7 +11,7 @@ export const personalInfo = {
   email: "umeraura99@gmail.com",
   linkedin: "linkedin.com/in/umar-backend-engineer",
   github: "https://github.com/Muhammadumerakmal",
-  resumeUrl: "https://linkedin.com/in/umar-backend-engineer",
+  resumeUrl: "/Muhammad-Umer-Akmal-Resume.pdf",
   resumeLabel: "Résumé",
   tagline: "Building AI products that survive beyond the demo stage.",
   description:
