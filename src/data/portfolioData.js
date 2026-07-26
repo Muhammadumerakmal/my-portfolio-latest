@@ -215,28 +215,39 @@ export const projectsMeta = {
 export const projects = [
   {
     id: 1,
-    title: "AI Soft",
-    description:
-      "A full-stack AI SaaS application with a modern TypeScript front end and an AI-powered backend, shipped to production on Vercel.",
-    tech: ["TypeScript", "React", "Node.js", "OpenAI API"],
-    github: "https://github.com/Muhammadumerakmal/ai-soft",
-    demo: "https://ai-soft-frontend.vercel.app",
-    image: "/projects/ai-soft.png",
-    featured: true,
-  },
-  {
-    id: 2,
     title: "AI Clinic",
     description:
-      "An AI-assisted clinic platform built with a spec-driven workflow, bringing intelligent patient interactions to a clean, responsive UI. Live on Vercel.",
+      "An AI-assisted clinic management platform built with a spec-driven workflow — intelligent appointment scheduling, patient records, and AI diagnostics in a clean, responsive UI. Live on Vercel.",
     tech: ["TypeScript", "React", "AI", "Vercel"],
     github: "https://github.com/Muhammadumerakmal/ai-clininc-sdd",
     demo: "https://ai-clininc-sdd-ten.vercel.app",
     image: "/projects/ai-clinic.png",
+    featured: true,
+  },
+  {
+    id: 2,
+    title: "Coding Night Web App",
+    description:
+      "A polished, production-deployed web app built for the Coding Night showcase — an AI-powered community support platform shipped end to end with a modern TypeScript stack.",
+    tech: ["TypeScript", "React", "Tailwind CSS"],
+    github: "https://github.com/Muhammadumerakmal/coding-night-final-umer-web-dev",
+    demo: "https://coding-night-final-umer-web-dev.vercel.app",
+    image: "/projects/coding-night.png",
     featured: false,
   },
   {
     id: 3,
+    title: "Attendance App",
+    description:
+      "A secure attendance-management app with authenticated sign-in and a polished, responsive interface, built with a modern TypeScript stack and deployed on Vercel.",
+    tech: ["TypeScript", "React", "Auth", "Vercel"],
+    github: "https://github.com/Muhammadumerakmal/attendence_app",
+    demo: "https://attendence-app-s6pz.vercel.app/",
+    image: "/projects/attendance.png",
+    featured: false,
+  },
+  {
+    id: 4,
     title: "OpenAI Agents SDK Suite",
     description:
       "A collection of agentic AI systems built on the OpenAI Agents SDK — tool-using agents, multi-step workflows, and LLM orchestration in Python.",
@@ -246,7 +257,7 @@ export const projects = [
     featured: false,
   },
   {
-    id: 4,
+    id: 5,
     title: "AI-Powered Freelancer Platform",
     description:
       "A freelancing platform that uses AI to match clients with the right talent and automate parts of the hiring and project workflow.",
@@ -256,24 +267,13 @@ export const projects = [
     featured: false,
   },
   {
-    id: 5,
+    id: 6,
     title: "CoreEd Backend",
     description:
       "A scalable backend for an online education platform — REST APIs, authentication, and data models built on Node.js and Express.",
     tech: ["Node.js", "Express", "MongoDB", "REST API"],
     github: "https://github.com/Muhammadumerakmal/coreed-backend-latest",
     demo: "",
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "Coding Night Web App",
-    description:
-      "A polished, production-deployed web app built for the Coding Night showcase and shipped end to end with a modern TypeScript stack.",
-    tech: ["TypeScript", "React", "Tailwind CSS"],
-    github: "https://github.com/Muhammadumerakmal/coding-night-final-umer-web-dev",
-    demo: "https://coding-night-final-umer-web-dev.vercel.app",
-    image: "/projects/coding-night.png",
     featured: false,
   },
 ];
