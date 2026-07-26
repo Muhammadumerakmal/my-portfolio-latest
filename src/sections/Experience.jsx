@@ -25,7 +25,7 @@ const Experience = () => {
             Work <span className="text-primary">Experience</span>
           </h2>
           <p className="text-lg text-muted max-w-2xl mx-auto">
-            Building scalable systems and AI-powered solutions across leading tech companies
+            Building scalable systems and AI-powered products across AI, backend, and full-stack roles
           </p>
         </motion.div>
 
@@ -65,20 +65,14 @@ const Experience = () => {
                     {exp.description}
                   </p>
 
-                  {exp.featured && (
+                  {exp.featured && exp.highlights && (
                     <div className="space-y-3 mb-6">
-                      <div className="flex items-center gap-2 text-sm text-muted">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                        <span>Backend Architecture & API Development</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-muted">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                        <span>AI Integration & Automation</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-muted">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                        <span>Production Deployment & Optimization</span>
-                      </div>
+                      {exp.highlights.map((item) => (
+                        <div key={item} className="flex items-center gap-2 text-sm text-muted">
+                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
                     </div>
                   )}
                 </div>

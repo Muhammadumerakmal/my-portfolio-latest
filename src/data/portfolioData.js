@@ -5,7 +5,7 @@
 // ============================================================================
 
 export const personalInfo = {
-  name: "Muhammad Umar Akmal",
+  name: "Muhammad Umer Akmal",
   title: "Agentic AI Engineer & Backend Developer",
   location: "Karachi, Sindh, Pakistan",
   email: "umeraura99@gmail.com",
@@ -92,68 +92,34 @@ export const aboutContent = {
 export const experiences = [
   {
     id: 1,
-    company: "FlyRank AI",
-    role: "Back End Developer",
+    company: "Governor Sindh Initiative (GIAIC)",
+    role: "Full-Stack Developer",
     description:
-      "Developing backend services and AI-driven features for the platform as part of the core engineering team.",
-    period: "Jun 2026 - Present",
+      "Building AI-powered web applications with advanced prompt engineering and LLM integration, engineering full-stack interfaces in Next.js, React, TypeScript, and Tailwind CSS, and developing RESTful APIs with FastAPI and Node.js.",
+    period: "Feb 2024 - Present",
     featured: true,
+    highlights: [
+      "AI apps with prompt engineering & LLM integration",
+      "Full-stack UIs in Next.js, React & TypeScript",
+      "REST APIs with FastAPI & Node.js",
+      "Web3 / decentralised app prototypes",
+    ],
   },
   {
     id: 2,
-    company: "Syntecxhub",
-    role: "Back End Developer",
+    company: "Independent / Freelance",
+    role: "Full-Stack Developer (Self-Directed)",
     description:
-      "Built and maintained scalable Node.js backends, integrated AI features into production workflows, and optimized APIs for performance and reliability alongside a distributed remote team.",
-    period: "Apr 2026 - Present",
+      "Designing and shipping production-ready web apps with Next.js, TypeScript, React, and Python backends — integrating the OpenAI Agents SDK for autonomous multi-step AI, containerising with Docker, and building REST APIs with auth, rate limiting, and pagination.",
+    period: "2023 - Present",
   },
   {
     id: 3,
-    company: "Governor Sindh Initiative (GenAI, Web3 & Metaverse)",
-    role: "Full Stack Engineer",
-    description:
-      "Built AI-powered applications and backend systems in Python, shipped LLM-based features, and turned experimental AI concepts into functional, integrated products.",
-    period: "Feb 2024 - Present",
-  },
-  {
-    id: 4,
-    company: "S.M.I.T (Saylani Mass I.T Training)",
-    role: "Full-stack Developer",
+    company: "SMIT (Saylani Mass I.T Training)",
+    role: "Full-Stack Developer",
     description:
       "Built full-stack applications with Node.js, React, and PostgreSQL — REST APIs, authentication, dashboards, and CRUD-based SaaS capstone projects.",
     period: "Mar 2025 - Present",
-  },
-  {
-    id: 5,
-    company: "Synent Technologies",
-    role: "Python Developer",
-    description:
-      "Contributed to backend development and AI system integrations, building automation workflows and API-driven architectures for real-world use cases.",
-    period: "Apr 2026 - Present",
-  },
-  {
-    id: 6,
-    company: "Arch Technologies",
-    role: "AI & Backend Developer Intern",
-    description:
-      "Built and tested Python and Node.js backend services across APIs, databases, and cloud deployment, and shipped AI and automation features for internal tools.",
-    period: "Apr 2026 - Present",
-  },
-  {
-    id: 7,
-    company: "Nexe-Agent",
-    role: "Full-stack Developer",
-    description:
-      "Delivered full-stack features across the product within a fast-moving remote engineering team.",
-    period: "Apr 2026 - Jun 2026",
-  },
-  {
-    id: 8,
-    company: "Black Ink Motion",
-    role: "Business Development Specialist",
-    description:
-      "Leading business development initiatives for a US-based team, connecting technical capability with client needs.",
-    period: "Jun 2026 - Present",
   },
 ];
 
@@ -299,7 +265,7 @@ export const contactMeta = {
 
 // ---- Footer --------------------------------------------------------------
 export const footerContent = {
-  brandAccent: "Umar",
+  brandAccent: "Umer",
   brandRest: "Akmal",
   tagline:
     "Building scalable systems and AI-powered applications that make a difference.",

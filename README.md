@@ -1,4 +1,4 @@
-# 👋 Hi, I'm Muhammed Umar Akmal
+# 👋 Hi, I'm Muhammad Umer Akmal
 
 ### Agentic AI Engineer & Full Stack Developer
 
@@ -83,7 +83,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 👤 Author
 
-**Muhammed Umar Akmal**
+**Muhammad Umer Akmal**
 - Email: umeraura99@gmail.com
 - LinkedIn: [linkedin.com/in/umar-backend-engineer](https://linkedin.com/in/umar-backend-engineer)
 - Location: Karachi, Pakistan
