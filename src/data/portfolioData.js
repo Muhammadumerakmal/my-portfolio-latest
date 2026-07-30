@@ -215,6 +215,17 @@ export const projectsMeta = {
 export const projects = [
   {
     id: 1,
+    title: "Umer Akmal Kitchen",
+    description:
+      "An AI-powered restaurant ordering platform — a conversational order assistant that takes orders in natural language, plus table reservations and delivery tracking in one modern interface. Live on Vercel.",
+    tech: ["React", "AI Assistant", "Tailwind CSS", "Vercel"],
+    github: "https://github.com/Muhammadumerakmal",
+    demo: "https://resturant-frontend-alpha.vercel.app/",
+    image: "/projects/restaurant.png",
+    featured: true,
+  },
+  {
+    id: 2,
     title: "AI Clinic",
     description:
       "An AI-assisted clinic management platform built with a spec-driven workflow — intelligent appointment scheduling, patient records, and AI diagnostics in a clean, responsive UI. Live on Vercel.",
@@ -222,10 +233,10 @@ export const projects = [
     github: "https://github.com/Muhammadumerakmal/ai-clininc-sdd",
     demo: "https://ai-clininc-sdd-ten.vercel.app",
     image: "/projects/ai-clinic.png",
-    featured: true,
+    featured: false,
   },
   {
-    id: 2,
+    id: 3,
     title: "Coding Night Web App",
     description:
       "A polished, production-deployed web app built for the Coding Night showcase — an AI-powered community support platform shipped end to end with a modern TypeScript stack.",
@@ -233,17 +244,6 @@ export const projects = [
     github: "https://github.com/Muhammadumerakmal/coding-night-final-umer-web-dev",
     demo: "https://coding-night-final-umer-web-dev.vercel.app",
     image: "/projects/coding-night.png",
-    featured: false,
-  },
-  {
-    id: 3,
-    title: "Attendance App",
-    description:
-      "A secure attendance-management app with authenticated sign-in and a polished, responsive interface, built with a modern TypeScript stack and deployed on Vercel.",
-    tech: ["TypeScript", "React", "Auth", "Vercel"],
-    github: "https://github.com/Muhammadumerakmal/attendence_app",
-    demo: "https://attendence-app-s6pz.vercel.app/",
-    image: "/projects/attendance.png",
     featured: false,
   },
   {
