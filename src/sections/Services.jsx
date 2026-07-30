@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
 import { services, servicesMeta } from '../data/portfolioData';
 import { iconMap } from '../data/icons';
@@ -41,7 +41,7 @@ const Services = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
               >
-                <Card className="p-8 h-full flex items-start gap-5" tilt>
+                <Card className="p-6 sm:p-8 h-full flex items-start gap-5" tilt>
                   <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 shrink-0">
                     {Icon && <Icon size={28} className="text-primary" />}
                   </div>

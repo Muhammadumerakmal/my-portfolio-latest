@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+﻿import { useRef, useEffect } from 'react';
 import { motion, useInView, animate } from 'framer-motion';
 import { aboutContent } from '../data/portfolioData';
 import { iconMap } from '../data/icons';
@@ -126,7 +126,7 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
               >
-                <Card className="p-8 h-full">
+                <Card className="p-6 sm:p-8 h-full">
                   <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 w-fit mb-4">
                     <Icon size={32} className={feature.color} />
                   </div>

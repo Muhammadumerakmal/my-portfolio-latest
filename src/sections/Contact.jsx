@@ -117,7 +117,7 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <Card className="p-8" glow>
+            <Card className="p-6 sm:p-8" glow>
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
               <div className="space-y-6">
                 <motion.a
@@ -128,9 +128,9 @@ const Contact = () => {
                   <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 group-hover:scale-110 transition-transform">
                     <Mail className="text-primary" size={20} />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm text-muted mb-1">Email</p>
-                    <p className="font-medium">{personalInfo.email}</p>
+                    <p className="font-medium break-words">{personalInfo.email}</p>
                   </div>
                 </motion.a>
 
@@ -144,9 +144,9 @@ const Contact = () => {
                   <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 group-hover:scale-110 transition-transform">
                     <Link2 className="text-primary" size={20} />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm text-muted mb-1">LinkedIn</p>
-                    <p className="font-medium">{personalInfo.linkedin}</p>
+                    <p className="font-medium break-words">{personalInfo.linkedin}</p>
                   </div>
                 </motion.a>
 
@@ -160,15 +160,15 @@ const Contact = () => {
                   <div className="p-3 bg-primary/10 rounded-xl border border-primary/20">
                     <MapPin className="text-primary" size={20} />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm text-muted mb-1">Location</p>
-                    <p className="font-medium">{personalInfo.location}</p>
+                    <p className="font-medium break-words">{personalInfo.location}</p>
                   </div>
                 </motion.div>
               </div>
             </Card>
 
-            <Card className="p-8">
+            <Card className="p-6 sm:p-8">
               <h3 className="text-xl font-bold mb-4">Available For</h3>
               <div className="space-y-3">
                 {contactMeta.availableFor.map((item, index) => (
@@ -195,7 +195,7 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Card className="p-8" glow>
+            <Card className="p-6 sm:p-8" glow>
               <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>

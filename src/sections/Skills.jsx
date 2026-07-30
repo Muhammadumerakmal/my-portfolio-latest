@@ -52,7 +52,7 @@ const Skills = () => {
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 className={index === 2 ? 'md:col-span-2 lg:col-span-1' : ''}
               >
-                <Card className="p-8 h-full" hover glow={category.key === 'ai'}>
+                <Card className="p-6 sm:p-8 h-full" hover glow={category.key === 'ai'}>
                   <div className="flex items-center gap-3 mb-6">
                     <motion.div
                       className="p-3 bg-primary/10 rounded-xl border border-primary/20"
@@ -105,7 +105,7 @@ const Skills = () => {
           transition={{ delay: 0.5, duration: 0.5 }}
           className="mt-12"
         >
-          <Card className="p-8" glow>
+          <Card className="p-6 sm:p-8" glow>
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold mb-2">Full Stack Expertise</h3>
               <p className="text-muted">

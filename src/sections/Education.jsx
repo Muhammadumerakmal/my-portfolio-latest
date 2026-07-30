@@ -38,7 +38,7 @@ const Education = () => {
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className={edu.type === 'certification' ? 'md:col-span-2' : ''}
             >
-              <Card className="p-8 h-full">
+              <Card className="p-6 sm:p-8 h-full">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-primary/10 rounded-xl border border-primary/20">
                     <GraduationCap className="text-primary" size={24} />
@@ -63,7 +63,7 @@ const Education = () => {
             transition={{ delay: 0.3, duration: 0.5 }}
             className="md:col-span-2 md:row-span-2"
           >
-            <Card className="p-8 h-full" glow>
+            <Card className="p-6 sm:p-8 h-full" glow>
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-3 bg-primary/10 rounded-xl border border-primary/20">
                   <Award className="text-primary" size={24} />
@@ -97,7 +97,7 @@ const Education = () => {
             transition={{ delay: 0.4, duration: 0.5 }}
             className="md:row-span-2"
           >
-            <Card className="p-8 h-full">
+            <Card className="p-6 sm:p-8 h-full">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-3 bg-primary/10 rounded-xl border border-primary/20">
                   <Languages className="text-primary" size={24} />
