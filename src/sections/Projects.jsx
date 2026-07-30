@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import { ExternalLink, Code2, Rocket } from 'lucide-react';
 import { projects, projectsMeta } from '../data/portfolioData';
 import Card from '../components/Card';
@@ -42,7 +42,7 @@ const Projects = () => {
             >
               <Card className={`p-8 h-full flex flex-col ${project.featured ? 'glow-border' : ''}`} glow={project.featured} tilt>
                 {project.image && (
-                  <div className="-mx-8 -mt-8 mb-6 overflow-hidden border-b border-white/5">
+                  <div className="-mx-8 -mt-8 mb-6 overflow-hidden border-b border-foreground/5">
                     <img
                       src={project.image}
                       alt={`${project.title} preview`}
@@ -81,7 +81,7 @@ const Projects = () => {
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 + i * 0.05 }}
                         whileHover={{ scale: 1.05 }}
-                        className={`px-3 py-1 bg-surface border border-white/10 rounded-lg font-medium text-primary ${
+                        className={`px-3 py-1 bg-surface border border-foreground/10 rounded-lg font-medium text-primary ${
                           project.featured ? 'text-sm' : 'text-xs'
                         }`}
                       >
@@ -91,7 +91,7 @@ const Projects = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 pt-4 border-t border-white/5 mt-auto">
+                <div className="flex items-center gap-4 pt-4 border-t border-foreground/5 mt-auto">
                   <motion.a
                     href={project.github}
                     target="_blank"
@@ -132,7 +132,7 @@ const Projects = () => {
             href={projectsMeta.viewAllUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-card border border-white/10 hover:border-primary/50 transition-all text-sm font-medium"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-card border border-foreground/10 hover:border-primary/50 transition-all text-sm font-medium"
             whileHover={{ scale: 1.05, y: -2 }}
           >
             <Code2 size={18} />

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import { Briefcase } from 'lucide-react';
 import { experiences } from '../data/portfolioData';
 import Card from '../components/Card';
@@ -77,7 +77,7 @@ const Experience = () => {
                   )}
                 </div>
 
-                <div className="pt-4 border-t border-white/5 mt-auto">
+                <div className="pt-4 border-t border-foreground/5 mt-auto">
                   <p className="text-sm text-muted">{exp.period}</p>
                 </div>
               </Card>

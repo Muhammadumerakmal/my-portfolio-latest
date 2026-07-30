@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import { Code2, Palette, Brain, Database, Server } from 'lucide-react';
 import { skills } from '../data/portfolioData';
 import Card from '../components/Card';
@@ -73,7 +73,7 @@ const Skills = () => {
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 + i * 0.05, duration: 0.5 }}
                         whileHover={{ x: 8, scale: 1.02 }}
-                        className="flex items-center gap-3 p-3 rounded-xl bg-surface/50 border border-white/5 hover:border-primary/20 transition-all cursor-default"
+                        className="flex items-center gap-3 p-3 rounded-xl bg-surface/50 border border-foreground/5 hover:border-primary/20 transition-all cursor-default"
                       >
                         <motion.div
                           className="w-2 h-2 rounded-full bg-primary"
@@ -126,7 +126,7 @@ const Skills = () => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   whileHover={{ scale: 1.05 }}
-                  className="text-center p-4 rounded-xl bg-surface/50 border border-white/5"
+                  className="text-center p-4 rounded-xl bg-surface/50 border border-foreground/5"
                 >
                   <div className="text-3xl font-bold text-primary mb-1">{stat.count}</div>
                   <div className="text-sm text-muted">{stat.label}</div>

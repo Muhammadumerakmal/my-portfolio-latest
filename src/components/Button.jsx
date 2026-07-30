@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+﻿import { useRef } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 const Button = ({ children, variant = 'primary', className = '', onClick, href, type, disabled = false, external = false }) => {
@@ -6,8 +6,8 @@ const Button = ({ children, variant = 'primary', className = '', onClick, href, 
 
   const variants = {
     primary: 'bg-primary text-black hover:bg-primary/90 glow-border hover:shadow-lg hover:shadow-primary/20',
-    secondary: 'bg-card text-white border border-white/10 hover:border-primary/50 hover:bg-card/80',
-    ghost: 'text-white hover:text-primary border border-white/10 hover:border-primary/50',
+    secondary: 'bg-card text-foreground border border-foreground/10 hover:border-primary/50 hover:bg-card/80',
+    ghost: 'text-foreground hover:text-primary border border-foreground/10 hover:border-primary/50',
   };
 
   const buttonClass = `${baseStyles} ${variants[variant]} ${className}`;

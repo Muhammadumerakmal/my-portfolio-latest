@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Link2, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { personalInfo, contactMeta } from '../data/portfolioData';
@@ -122,7 +122,7 @@ const Contact = () => {
               <div className="space-y-6">
                 <motion.a
                   href={`mailto:${personalInfo.email}`}
-                  className="flex items-start gap-4 p-4 rounded-xl bg-surface/50 border border-white/5 hover:border-primary/20 transition-all group"
+                  className="flex items-start gap-4 p-4 rounded-xl bg-surface/50 border border-foreground/5 hover:border-primary/20 transition-all group"
                   whileHover={{ x: 5 }}
                 >
                   <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 group-hover:scale-110 transition-transform">
@@ -138,7 +138,7 @@ const Contact = () => {
                   href={`https://${personalInfo.linkedin}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-4 p-4 rounded-xl bg-surface/50 border border-white/5 hover:border-primary/20 transition-all group"
+                  className="flex items-start gap-4 p-4 rounded-xl bg-surface/50 border border-foreground/5 hover:border-primary/20 transition-all group"
                   whileHover={{ x: 5 }}
                 >
                   <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 group-hover:scale-110 transition-transform">
@@ -151,7 +151,7 @@ const Contact = () => {
                 </motion.a>
 
                 <motion.div
-                  className="flex items-start gap-4 p-4 rounded-xl bg-surface/50 border border-white/5"
+                  className="flex items-start gap-4 p-4 rounded-xl bg-surface/50 border border-foreground/5"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -208,7 +208,7 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-surface border border-white/10 focus:border-primary/50 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-surface border border-foreground/10 focus:border-primary/50 focus:outline-none transition-colors"
                     placeholder="Your name"
                   />
                 </div>
@@ -223,7 +223,7 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-surface border border-white/10 focus:border-primary/50 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-surface border border-foreground/10 focus:border-primary/50 focus:outline-none transition-colors"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -238,7 +238,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows="6"
-                    className="w-full px-4 py-3 rounded-xl bg-surface border border-white/10 focus:border-primary/50 focus:outline-none transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-surface border border-foreground/10 focus:border-primary/50 focus:outline-none transition-colors resize-none"
                     placeholder="Tell me about your project..."
                   />
                 </div>

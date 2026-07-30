@@ -1,4 +1,4 @@
-import {
+﻿import {
   motion,
   useMotionValue,
   useSpring,
@@ -7,7 +7,7 @@ import {
 } from 'framer-motion';
 
 const Card = ({ children, className = '', hover = true, glow = false, tilt = false }) => {
-  const baseStyles = 'bg-card rounded-2xl border border-white/5 overflow-hidden';
+  const baseStyles = 'bg-card rounded-2xl border border-foreground/5 overflow-hidden';
   const glowStyles = glow ? 'glow-soft' : '';
 
   // Cursor position within the card (0..1 on each axis).

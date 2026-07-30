@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import { GraduationCap, Award, Languages } from 'lucide-react';
 import { education, certifications, languages } from '../data/portfolioData';
 import Card from '../components/Card';
@@ -79,7 +79,7 @@ const Education = () => {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1, duration: 0.5 }}
                     whileHover={{ x: 5 }}
-                    className="flex items-start gap-3 p-4 rounded-xl bg-surface/50 border border-white/5 hover:border-primary/20 transition-all"
+                    className="flex items-start gap-3 p-4 rounded-xl bg-surface/50 border border-foreground/5 hover:border-primary/20 transition-all"
                   >
                     <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
                     <p className="text-sm font-medium">{cert}</p>

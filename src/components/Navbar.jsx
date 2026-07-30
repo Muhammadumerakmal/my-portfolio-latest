@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { navigation } from '../data/portfolioData';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -9,7 +10,10 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
       setIsScrolled(window.scrollY > 50);
 
       // Update active section based on scroll position
@@ -28,7 +32,15 @@ const Navbar = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Coalesce scroll events into one update per animation frame.
+    const handleScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -53,7 +65,7 @@ const Navbar = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="glass rounded-full px-6 py-3 border border-white/10 glow-border">
+          <div className="glass rounded-full px-6 py-3 border border-foreground/10 glow-border flex items-center gap-2">
           <ul className="flex items-center gap-1">
             {navigation.map((item, index) => (
               <motion.li
@@ -71,7 +83,7 @@ const Navbar = () => {
                   className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                     activeSection === item.href.replace('#', '')
                       ? 'text-primary'
-                      : 'text-white/70 hover:text-white'
+                      : 'text-foreground/70 hover:text-foreground'
                   }`}
                 >
                   {activeSection === item.href.replace('#', '') && (
@@ -86,21 +98,24 @@ const Navbar = () => {
               </motion.li>
             ))}
           </ul>
+          <span className="w-px h-5 bg-foreground/10" aria-hidden="true" />
+          <ThemeToggle className="w-9 h-9" />
           </div>
         </motion.nav>
       </div>
 
       {/* Mobile Navbar */}
       <motion.div
-        className="fixed top-4 right-4 z-50 lg:hidden"
+        className="fixed top-4 right-4 z-50 lg:hidden flex items-center gap-2"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
       >
+        <ThemeToggle className="glass w-12 h-12 rounded-full border border-foreground/10 glow-border" />
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isMobileMenuOpen}
-          className="glass p-3 rounded-full border border-white/10 glow-border"
+          className="glass p-3 rounded-full border border-foreground/10 glow-border"
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -117,7 +132,7 @@ const Navbar = () => {
           >
             <div className="absolute inset-0 bg-black/80 backdrop-blur-xl" onClick={() => setIsMobileMenuOpen(false)} />
             <motion.div
-              className="absolute top-20 right-4 glass rounded-2xl border border-white/10 p-4 min-w-[200px]"
+              className="absolute top-20 right-4 glass rounded-2xl border border-foreground/10 p-4 min-w-[200px]"
               initial={{ opacity: 0, scale: 0.8, y: -20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.8, y: -20 }}
@@ -134,7 +149,7 @@ const Navbar = () => {
                       className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                         activeSection === item.href.replace('#', '')
                           ? 'bg-primary/10 text-primary border border-primary/20'
-                          : 'text-white/70 hover:text-white hover:bg-white/5'
+                          : 'text-foreground/70 hover:text-foreground hover:bg-foreground/5'
                       }`}
                     >
                       {item.name}
