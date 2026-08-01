@@ -40,9 +40,9 @@ const Projects = () => {
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className={project.featured ? 'md:col-span-2 md:row-span-2' : ''}
             >
-              <Card className={`p-8 h-full flex flex-col ${project.featured ? 'glow-border' : ''}`} glow={project.featured} tilt>
-                {project.image && (
-                  <div className="-mx-8 -mt-8 mb-6 overflow-hidden border-b border-foreground/5">
+              <Card className={`p-6 sm:p-8 h-full flex flex-col ${project.featured ? 'glow-border' : ''}`} glow={project.featured} tilt>
+                <div className="-mx-6 sm:-mx-8 -mt-6 sm:-mt-8 mb-6 overflow-hidden border-b border-foreground/5">
+                  {project.image ? (
                     <img
                       src={project.image}
                       alt={`${project.title} preview`}
@@ -52,8 +52,17 @@ const Projects = () => {
                       height={800}
                       className={`w-full object-cover object-center ${project.featured ? 'h-56' : 'h-40'}`}
                     />
-                  </div>
-                )}
+                  ) : (
+                    // No screenshot: show a branded gradient banner so every
+                    // card has a consistent visual header.
+                    <div
+                      aria-hidden="true"
+                      className={`w-full flex items-center justify-center bg-gradient-to-br from-primary/20 via-card to-surface ${project.featured ? 'h-56' : 'h-40'}`}
+                    >
+                      <Code2 className="text-primary/50" size={44} />
+                    </div>
+                  )}
+                </div>
                 <div className="flex-1">
                   {project.featured && (
                     <motion.span
