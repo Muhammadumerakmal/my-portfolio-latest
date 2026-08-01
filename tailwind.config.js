@@ -31,8 +31,8 @@ export default {
           '50%': { transform: 'translateY(-20px)' },
         },
         glow: {
-          '0%': { boxShadow: '0 0 20px rgba(163,255,18,0.2)' },
-          '100%': { boxShadow: '0 0 40px rgba(163,255,18,0.4)' },
+          '0%': { boxShadow: '0 0 20px rgb(var(--color-primary) / 0.2)' },
+          '100%': { boxShadow: '0 0 40px rgb(var(--color-primary) / 0.4)' },
         },
       },
       backdropBlur: {

@@ -31,37 +31,45 @@ const Button = ({ children, variant = 'primary', className = '', onClick, href, 
     y.set(0);
   };
 
-  const button = (
-    <motion.button
-      ref={ref}
-      type={type}
-      disabled={disabled}
-      className={`${buttonClass} ${disabled ? 'opacity-60 cursor-not-allowed' : ''}`}
-      onClick={onClick}
-      onMouseMove={handleMove}
-      onMouseLeave={reset}
-      style={{ x: springX, y: springY }}
-      whileHover={disabled ? {} : { scale: 1.05 }}
-      whileTap={disabled ? {} : { scale: 0.95 }}
-      transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-    >
-      {children}
-    </motion.button>
-  );
+  // Shared motion props for both the button and link variants so the
+  // magnetic hover effect behaves identically.
+  const motionProps = {
+    ref,
+    className: `${buttonClass} ${disabled ? 'opacity-60 cursor-not-allowed' : ''}`,
+    onMouseMove: handleMove,
+    onMouseLeave: reset,
+    style: { x: springX, y: springY },
+    whileHover: disabled ? {} : { scale: 1.05 },
+    whileTap: disabled ? {} : { scale: 0.95 },
+    transition: { type: 'spring', stiffness: 400, damping: 17 },
+  };
 
   if (href) {
+    // Render an anchor, not a button, so we never nest an interactive
+    // element inside another one (invalid HTML / a11y issue).
     return (
-      <a
+      <motion.a
         href={href}
-        className="inline-block"
         {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        {...motionProps}
+        onClick={(e) => {
+          if (disabled) {
+            e.preventDefault();
+            return;
+          }
+          onClick?.(e);
+        }}
       >
-        {button}
-      </a>
+        {children}
+      </motion.a>
     );
   }
 
-  return button;
+  return (
+    <motion.button type={type} disabled={disabled} onClick={onClick} {...motionProps}>
+      {children}
+    </motion.button>
+  );
 };
 
 export default Button;

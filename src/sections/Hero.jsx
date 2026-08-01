@@ -41,7 +41,7 @@ const TypewriterRoles = ({ roles }) => {
 const Hero = () => {
   const mouseX = useMotionValue(-500);
   const mouseY = useMotionValue(-500);
-  const spotlight = useMotionTemplate`radial-gradient(500px circle at ${mouseX}px ${mouseY}px, rgba(163,255,18,0.10), transparent 70%)`;
+  const spotlight = useMotionTemplate`radial-gradient(500px circle at ${mouseX}px ${mouseY}px, rgb(var(--color-primary) / 0.10), transparent 70%)`;
 
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();

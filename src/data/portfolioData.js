@@ -219,7 +219,7 @@ export const projects = [
     description:
       "An AI-powered restaurant ordering platform — a conversational order assistant that takes orders in natural language, plus table reservations and delivery tracking in one modern interface. Live on Vercel.",
     tech: ["React", "AI Assistant", "Tailwind CSS", "Vercel"],
-    github: "https://github.com/Muhammadumerakmal",
+    github: "https://github.com/Muhammadumerakmal/resturant",
     demo: "https://resturant-frontend-alpha.vercel.app/",
     image: "/projects/restaurant.png",
     featured: true,

@@ -26,7 +26,7 @@ const Card = ({ children, className = '', hover = true, glow = false, tilt = fal
 
   const glareX = useTransform(mouseX, (v) => `${v * 100}%`);
   const glareY = useTransform(mouseY, (v) => `${v * 100}%`);
-  const spotlight = useMotionTemplate`radial-gradient(300px circle at ${glareX} ${glareY}, rgba(163,255,18,0.12), transparent 70%)`;
+  const spotlight = useMotionTemplate`radial-gradient(300px circle at ${glareX} ${glareY}, rgb(var(--color-primary) / 0.12), transparent 70%)`;
 
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
