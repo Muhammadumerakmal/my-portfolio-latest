@@ -9,7 +9,7 @@ export const personalInfo = {
   title: "Agentic AI Engineer & Backend Developer",
   location: "Karachi, Sindh, Pakistan",
   email: "umeraura99@gmail.com",
-  linkedin: "linkedin.com/in/umar-backend-engineer",
+  linkedin: "linkedin.com/in/muhammad-umer-akmal-1a065139a",
   github: "https://github.com/Muhammadumerakmal",
   resumeUrl: "/Muhammad-Umer-Akmal-Resume.pdf",
   resumeLabel: "Résumé",
@@ -56,9 +56,10 @@ export const aboutContent = {
     "AI Automation",
     "RAG Systems",
   ],
-  // NOTE: adjust these numbers to your real figures.
+  // Grounded in the resume PDF (public/Muhammad-Umer-Akmal-Resume.pdf).
+  // Update here if your real figures change.
   stats: [
-    { number: "8+", label: "Roles & Internships" },
+    { number: "3+", label: "Roles & Internships" },
     { number: "2+", label: "Years Experience" },
     { number: "9+", label: "GitHub Projects" },
     { number: "4+", label: "Certifications" },
@@ -237,9 +238,9 @@ export const projects = [
   },
   {
     id: 3,
-    title: "Coding Night Web App",
+    title: "HelpHub AI",
     description:
-      "A polished, production-deployed web app built for the Coding Night showcase — an AI-powered community support platform shipped end to end with a modern TypeScript stack.",
+      "A community-powered support platform — AI help requests, leaderboards, and trust scores — built for the Coding Night showcase and shipped end to end with a modern TypeScript stack.",
     tech: ["TypeScript", "React", "Tailwind CSS"],
     github: "https://github.com/Muhammadumerakmal/coding-night-final-umer-web-dev",
     demo: "https://coding-night-final-umer-web-dev.vercel.app",
@@ -312,7 +313,7 @@ export const footerContent = {
     {
       icon: "ExternalLink",
       label: "LinkedIn",
-      href: "https://linkedin.com/in/umar-backend-engineer",
+      href: "https://linkedin.com/in/muhammad-umer-akmal-1a065139a",
     },
     {
       icon: "ExternalLink",
