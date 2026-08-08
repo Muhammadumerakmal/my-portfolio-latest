@@ -53,7 +53,7 @@ const Hero = () => {
     <section
       id="home"
       onMouseMove={handleMouseMove}
-      className="min-h-screen flex items-center justify-center relative overflow-hidden px-6 md:px-12 py-20"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden px-6 md:px-12 pt-28 pb-20 lg:pt-32"
     >
       {/* Cursor-reactive spotlight */}
       <motion.div

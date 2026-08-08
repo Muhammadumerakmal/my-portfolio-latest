@@ -41,7 +41,7 @@ const Projects = () => {
               className={project.featured ? 'md:col-span-2 md:row-span-2' : ''}
             >
               <Card className={`p-6 sm:p-8 h-full flex flex-col ${project.featured ? 'glow-border' : ''}`} glow={project.featured} tilt>
-                <div className="-mx-6 sm:-mx-8 -mt-6 sm:-mt-8 mb-6 overflow-hidden border-b border-foreground/5">
+                <div className={`-mx-6 sm:-mx-8 -mt-6 sm:-mt-8 mb-6 overflow-hidden border-b border-foreground/5 ${project.featured ? 'lg:flex-1 lg:min-h-0' : ''}`}>
                   {project.image ? (
                     <img
                       src={project.image}
@@ -50,20 +50,20 @@ const Projects = () => {
                       decoding="async"
                       width={1280}
                       height={800}
-                      className={`w-full object-cover object-center ${project.featured ? 'h-56' : 'h-40'}`}
+                      className={`w-full object-cover object-center ${project.featured ? 'h-64 sm:h-80 lg:h-full' : 'h-40'}`}
                     />
                   ) : (
                     // No screenshot: show a branded gradient banner so every
                     // card has a consistent visual header.
                     <div
                       aria-hidden="true"
-                      className={`w-full flex items-center justify-center bg-gradient-to-br from-primary/20 via-card to-surface ${project.featured ? 'h-56' : 'h-40'}`}
+                      className={`w-full flex items-center justify-center bg-gradient-to-br from-primary/20 via-card to-surface ${project.featured ? 'h-64 sm:h-80 lg:h-full' : 'h-40'}`}
                     >
                       <Code2 className="text-primary/50" size={44} />
                     </div>
                   )}
                 </div>
-                <div className="flex-1">
+                <div className={`flex-1 ${project.featured ? 'lg:flex-none' : ''}`}>
                   {project.featured && (
                     <motion.span
                       className="inline-block px-3 py-1 bg-primary/10 border border-primary/30 rounded-full text-xs font-semibold text-primary mb-4"
