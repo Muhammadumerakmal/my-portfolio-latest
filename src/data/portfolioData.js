@@ -226,6 +226,17 @@ export const projects = [
     featured: true,
   },
   {
+    id: 7,
+    title: "Physical AI & Humanoid Robotics",
+    description:
+      "A first-edition technical book and interactive learning platform — a practical engineering guide to physical AI and humanoid robots, with full-text search, a glossary, and an in-browser lab where you command a working 3D humanoid in natural language. Live on Vercel.",
+    tech: ["Docusaurus", "React", "3D / WebGL", "AI Assistant", "Vercel"],
+    github: "https://github.com/Muhammadumerakmal/physical-ai-humanoid-robotics",
+    demo: "https://physical-ai-humanoid-robotics-five-iota.vercel.app/",
+    image: "/projects/physical-ai-robotics.jpg",
+    featured: false,
+  },
+  {
     id: 2,
     title: "AI Clinic",
     description:
