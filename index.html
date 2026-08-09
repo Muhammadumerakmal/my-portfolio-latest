@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#000000" />
@@ -22,13 +23,21 @@
       })();
     </script>
 
-    <!-- Fonts: preconnect + non-blocking load (moved out of CSS @import) -->
+    <!-- Fonts: preconnect + non-blocking load (avoids ~1s render block) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap"
+      />
+    </noscript>
 
     <!-- SEO Meta Tags -->
     <meta name="description" content="Muhammad Umer Akmal — Agentic AI Engineer & Backend Developer building scalable backend systems and production-grade AI integrations with Node.js, FastAPI, MERN, and modern LLM workflows." />

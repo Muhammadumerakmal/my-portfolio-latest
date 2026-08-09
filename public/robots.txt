@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://my-portfolio-latest-fqnh.vercel.app/sitemap.xml
