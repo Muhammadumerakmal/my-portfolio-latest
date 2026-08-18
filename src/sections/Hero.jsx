@@ -1,71 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
-import { motion, useMotionValue, useMotionTemplate, useReducedMotion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
 import { ArrowRight, ChevronDown, Sparkles, FileText } from 'lucide-react';
 import Button from '../components/Button';
 import { personalInfo, hero } from '../data/portfolioData';
-
-// Resolves `text` out of streaming random glyphs — a "decrypt" reveal.
-// Screen readers get the real text; honors prefers-reduced-motion.
-const SCRAMBLE_CHARS = '01<>-_/[]{}=+*#%&$!?';
-
-const ScrambleText = ({ text, className = '', startDelay = 0 }) => {
-  const reduce = useReducedMotion();
-  const [out, setOut] = useState('');
-  const [done, setDone] = useState(false);
-  const rafRef = useRef(0);
-
-  useEffect(() => {
-    if (reduce) return;
-    const offset = Math.round(startDelay / 16);
-    const queue = Array.from(text).map((ch, i) => ({
-      ch,
-      start: offset + Math.floor(Math.random() * 8) + Math.round(i * 1.2),
-      end: offset + Math.floor(Math.random() * 20) + 14 + Math.round(i * 1.2),
-      rnd: '',
-    }));
-
-    let frame = 0;
-    const tick = () => {
-      let complete = 0;
-      const next = queue
-        .map((q) => {
-          if (q.ch === ' ') {
-            complete++;
-            return ' ';
-          }
-          if (frame >= q.end) {
-            complete++;
-            return q.ch;
-          }
-          if (frame >= q.start) {
-            if (!q.rnd || Math.random() < 0.28) {
-              q.rnd = SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
-            }
-            return q.rnd;
-          }
-          return ' ';
-        })
-        .join('');
-      setOut(next);
-      if (complete === queue.length) {
-        setDone(true);
-        return;
-      }
-      frame++;
-      rafRef.current = requestAnimationFrame(tick);
-    };
-    rafRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [text, reduce, startDelay]);
-
-  const shown = reduce || done ? text : out;
-  return (
-    <span className={className}>
-      <span className="sr-only">{text}</span>
-      <span aria-hidden="true">{shown}</span>
-    </span>
-  );
-};
 
 // Types out and deletes each role in a loop.
 const TypewriterRoles = ({ roles }) => {
@@ -230,12 +167,15 @@ const Hero = () => {
             >
               <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight">
                 {hero.headlineLines.map((line, i) => (
-                  <ScrambleText
+                  <motion.span
                     key={i}
-                    text={line}
-                    startDelay={450 + i * 260}
                     className={`block ${i === hero.headlineAccentLine ? 'text-primary glow-text' : ''}`}
-                  />
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 + i * 0.1 }}
+                  >
+                    {line}
+                  </motion.span>
                 ))}
               </h2>
 
