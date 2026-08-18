@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Users, GitBranch, Calendar, Code2, ExternalLink, FolderGit2 } from 'lucide-react';
+import { Users, UserPlus, GitBranch, Code2, ExternalLink, FolderGit2 } from 'lucide-react';
 import { personalInfo, skills } from '../data/portfolioData';
 import Card from '../components/Card';
 
 // Username derived from the profile URL in one place.
 const USERNAME = personalInfo.github.replace(/\/+$/, '').split('/').pop();
-const CACHE_KEY = `gh:${USERNAME}`;
+const CACHE_KEY = `gh:v2:${USERNAME}`;
 
 // Shown if the API is unreachable or rate-limited (60 req/hr/IP unauthenticated),
 // so the section never renders broken or empty. Grounded, not inflated.
 const STATIC_FALLBACK = {
-  publicRepos: 68,
-  followers: null,
-  years: new Date().getFullYear() - 2025 + 1,
+  publicRepos: 69,
+  followers: 28,
+  following: 12,
   languages: [
-    ['TypeScript', 0], ['JavaScript', 0], ['Python', 0], ['HTML', 0],
+    ['Python', 0], ['TypeScript', 0], ['JavaScript', 0], ['HTML', 0],
   ],
   recent: [],
   live: false,
@@ -50,7 +50,7 @@ const summarize = (profile, repos) => {
   return {
     publicRepos: profile.public_repos,
     followers: profile.followers,
-    years: new Date().getFullYear() - new Date(profile.created_at).getFullYear() + 1,
+    following: profile.following,
     languages: languages.length ? languages : STATIC_FALLBACK.languages,
     recent,
     live: true,
@@ -106,10 +106,8 @@ const GitHubActivity = () => {
 
   const stats = [
     { icon: FolderGit2, label: 'Public repos', value: `${data.publicRepos}+` },
-    ...(data.followers != null
-      ? [{ icon: Users, label: 'Followers', value: `${data.followers}` }]
-      : []),
-    { icon: Calendar, label: 'Years on GitHub', value: `${data.years}` },
+    { icon: Users, label: 'Followers', value: `${data.followers}` },
+    { icon: UserPlus, label: 'Following', value: `${data.following}` },
     { icon: GitBranch, label: 'Top language', value: topLanguage },
   ];
 
