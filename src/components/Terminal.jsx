@@ -53,6 +53,7 @@ const COMMANDS = {
       '  education    Education & certifications',
       '  contact      How to reach me',
       '  resume       Download my résumé',
+      '  neofetch     A quick visual summary',
       '  goto <sec>   Jump to a section (e.g. goto contact)',
       '  theme        Toggle light / dark',
       '  clear        Clear the screen',
@@ -153,6 +154,31 @@ const COMMANDS = {
   echo: (args) => ({ lines: [args.join(' ')] }),
 
   sudo: () => ({ lines: ["Nice try. You already have root here 😉"] }),
+
+  neofetch: () => {
+    const art = [
+      { text: ' _   _      _   ', accent: true },
+      { text: '| | | |    / \\  ', accent: true },
+      { text: '| |_| |   / _ \\ ', accent: true },
+      { text: ' \\___/   /_/ \\_\\', accent: true },
+    ];
+    const stack = [skills.backend[0], skills.backend[2], skills.ai[0]]
+      .filter(Boolean)
+      .join(' · ');
+    const live = projects.filter((p) => p.demo).length;
+    const info = [
+      { text: 'visitor@umer', accent: true },
+      '-------------------------------------',
+      'OS:        Portfolio (React + Vite)',
+      `Name:      ${personalInfo.name}`,
+      `Role:      ${personalInfo.title}`,
+      `Location:  ${personalInfo.location}`,
+      `Stack:     ${stack}`,
+      `Projects:  ${projects.length} shipped, ${live} live`,
+      'Status:    Available for work',
+    ];
+    return { lines: [...art, '', ...info] };
+  },
 };
 
 const Terminal = () => {
@@ -161,9 +187,32 @@ const Terminal = () => {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState([]);
   const [histIndex, setHistIndex] = useState(-1);
+  const [showHint, setShowHint] = useState(false);
 
   const inputRef = useRef(null);
   const bodyRef = useRef(null);
+
+  const dismissHint = useCallback(() => {
+    setShowHint(false);
+    try {
+      localStorage.setItem('terminalHintSeen', '1');
+    } catch {
+      /* storage unavailable — ignore */
+    }
+  }, []);
+
+  // Nudge first-time visitors toward the terminal (once, then remembered).
+  useEffect(() => {
+    let seen = false;
+    try {
+      seen = localStorage.getItem('terminalHintSeen') === '1';
+    } catch {
+      /* ignore */
+    }
+    if (seen) return;
+    const t = setTimeout(() => setShowHint(true), 4000);
+    return () => clearTimeout(t);
+  }, []);
 
   // Global shortcut: Ctrl+` toggles the terminal.
   useEffect(() => {
@@ -171,13 +220,19 @@ const Terminal = () => {
       if (e.ctrlKey && e.key === '`') {
         e.preventDefault();
         setOpen((o) => !o);
+        dismissHint();
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, []);
+  }, [dismissHint]);
 
-  // Focus the input and scroll to the newest output whenever things change.
+  const openTerminal = useCallback(() => {
+    setOpen(true);
+    dismissHint();
+  }, [dismissHint]);
+
+  // Focus the input when the terminal opens.
   useEffect(() => {
     if (open) inputRef.current?.focus();
   }, [open]);
@@ -278,10 +333,12 @@ const Terminal = () => {
     }
     const text = typeof line === 'object' ? line.text : line;
     const isPrompt = typeof line === 'object' && line.prompt;
+    const isAccent = typeof line === 'object' && line.accent;
+    const color = isAccent ? 'text-primary' : isPrompt ? 'text-foreground' : 'text-muted';
     return (
       <div
         key={i}
-        className={`whitespace-pre-wrap break-words ${isPrompt ? 'text-foreground' : 'text-muted'}`}
+        className={`whitespace-pre break-words ${color}`}
       >
         {text || ' '}
       </div>
@@ -293,7 +350,10 @@ const Terminal = () => {
       {/* Launcher */}
       <motion.button
         type="button"
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => {
+          setOpen((o) => !o);
+          dismissHint();
+        }}
         aria-label="Open interactive terminal"
         title="Interactive terminal (Ctrl+`)"
         className="fixed bottom-6 right-6 z-[90] grid place-items-center w-12 h-12 rounded-full bg-card border border-primary/30 text-primary glow-soft hover:border-primary/60 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
@@ -305,6 +365,41 @@ const Terminal = () => {
       >
         <TerminalSquare size={20} />
       </motion.button>
+
+      {/* First-visit discovery hint */}
+      <AnimatePresence>
+        {showHint && !open && (
+          <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            transition={{ duration: 0.25 }}
+            className="fixed bottom-[4.75rem] right-6 z-[90] flex items-center gap-2 px-3 py-2 rounded-xl bg-card border border-primary/30 glow-soft text-sm"
+          >
+            <span className="text-muted">
+              psst — try the{' '}
+              <button
+                type="button"
+                onClick={openTerminal}
+                className="text-primary font-medium hover:underline"
+              >
+                terminal
+              </button>
+            </span>
+            <kbd className="px-1.5 py-0.5 rounded bg-surface border border-foreground/10 text-xs text-muted">
+              Ctrl + `
+            </kbd>
+            <button
+              type="button"
+              onClick={dismissHint}
+              aria-label="Dismiss hint"
+              className="text-muted hover:text-foreground"
+            >
+              <X size={14} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {open && (
