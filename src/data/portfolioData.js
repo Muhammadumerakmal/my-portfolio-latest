@@ -13,10 +13,6 @@ export const personalInfo = {
   github: "https://github.com/Muhammadumerakmal",
   resumeUrl: "/Muhammad-Umer-Akmal-Resume.pdf",
   resumeLabel: "Résumé",
-  // Drop a square headshot at public/profile.jpg to activate the hero avatar.
-  // Until then, the initials monogram below is shown automatically.
-  photo: "/profile.jpg",
-  avatarInitials: "MU",
   tagline: "Building AI products that survive beyond the demo stage.",
   description:
     "I build scalable backend systems and integrate AI into products made for production — not just demos. My stack spans Node.js, Express, FastAPI, MongoDB, PostgreSQL, and modern LLM and agentic-AI workflows.",
