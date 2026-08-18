@@ -225,6 +225,27 @@ export const projects = [
     image: "/projects/restaurant.png",
     category: "AI",
     featured: true,
+    // ---- CASE STUDY (optional) ----------------------------------------
+    // Adding a `caseStudy` object makes a "Read case study" button appear on
+    // the card, opening a modal. Edit the copy below with your real story.
+    // The `metrics` are qualitative feature badges by default — replace them
+    // with real numbers (e.g. "< 2s", "40% faster") ONLY if you can back them.
+    caseStudy: {
+      role: "Solo build — design, frontend, and AI integration",
+      timeline: "2025",
+      problem:
+        "Traditional online food ordering makes customers hunt through menus, filters, and multi-step forms. I wanted to prove that an AI assistant could take an order the way a person naturally speaks — 'a large pepperoni and two cokes, delivered' — while still handling the real operational pieces a restaurant needs.",
+      build:
+        "I built a React + Tailwind ordering interface with a conversational assistant that parses natural-language orders into structured cart items, alongside a table-reservation flow and delivery tracking in one cohesive UI. The focus was keeping the AI genuinely useful — grounded in the actual menu — rather than a demo gimmick, and shipping it live on Vercel.",
+      outcome:
+        "A working, deployed product where a first-time visitor can place a full order by typing or talking to the assistant, reserve a table, and track delivery — no account or menu-scrolling required. It's the clearest end-to-end example of my 'AI beyond the demo' approach.",
+      metrics: [
+        { label: "Ordering", value: "Natural language" },
+        { label: "Reservations", value: "Built in" },
+        { label: "Delivery", value: "Live tracking" },
+        { label: "Status", value: "Deployed" },
+      ],
+    },
   },
   {
     id: 7,

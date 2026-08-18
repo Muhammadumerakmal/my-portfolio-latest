@@ -1,8 +1,9 @@
 ﻿import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Code2, Rocket } from 'lucide-react';
+import { ExternalLink, Code2, Rocket, BookOpen } from 'lucide-react';
 import { projects, projectsMeta } from '../data/portfolioData';
 import Card from '../components/Card';
+import CaseStudyModal from '../components/CaseStudyModal';
 
 // Build the filter list from the categories actually present in the data,
 // so the chips never drift out of sync with the projects themselves.
@@ -10,6 +11,7 @@ const categories = ['All', ...Array.from(new Set(projects.map((p) => p.category)
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCase, setActiveCase] = useState(null);
   const visibleProjects =
     activeCategory === 'All'
       ? projects
@@ -169,6 +171,17 @@ const Projects = () => {
                       <span>Live Demo</span>
                     </motion.a>
                   )}
+                  {project.caseStudy && (
+                    <motion.button
+                      type="button"
+                      onClick={() => setActiveCase(project)}
+                      className="flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors ml-auto focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded"
+                      whileHover={{ x: 3 }}
+                    >
+                      <BookOpen size={18} />
+                      <span>Read case study</span>
+                    </motion.button>
+                  )}
                 </div>
               </Card>
             </motion.div>
@@ -197,6 +210,12 @@ const Projects = () => {
           </motion.a>
         </motion.div>
       </div>
+
+      <AnimatePresence>
+        {activeCase && (
+          <CaseStudyModal project={activeCase} onClose={() => setActiveCase(null)} />
+        )}
+      </AnimatePresence>
     </section>
   );
 };
