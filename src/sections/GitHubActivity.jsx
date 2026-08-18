@@ -69,6 +69,7 @@ const readCache = () => {
 const GitHubActivity = () => {
   // Seed from this session's cache if present, so no setState runs in the effect.
   const [data, setData] = useState(() => readCache() || STATIC_FALLBACK);
+  const [loading, setLoading] = useState(() => !readCache());
 
   useEffect(() => {
     if (readCache()) return; // already have a fresh summary in state
@@ -85,7 +86,7 @@ const GitHubActivity = () => {
         if (!profileRes.ok || !reposRes.ok) return; // keep fallback (e.g. rate-limited)
         const profile = await profileRes.json();
         const repos = await reposRes.json();
-        if (!Array.isArray(repos)) return;
+        if (!Array.isArray(repos) || controller.signal.aborted) return;
         const summary = summarize(profile, repos);
         setData(summary);
         try {
@@ -95,6 +96,8 @@ const GitHubActivity = () => {
         }
       } catch {
         /* network error / abort — keep fallback */
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
       }
     })();
 
@@ -125,8 +128,15 @@ const GitHubActivity = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
             whileHover={{ scale: 1.05 }}
           >
-            <FolderGit2 size={16} className="text-primary" />
-            <span className="text-sm font-medium text-primary">Building in public</span>
+            <span className="relative flex h-2 w-2" aria-hidden="true">
+              {data.live && (
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+              )}
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+            </span>
+            <span className="text-sm font-medium text-primary">
+              {loading ? 'Fetching live data…' : data.live ? 'Live from GitHub' : 'Building in public'}
+            </span>
           </motion.div>
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
             GitHub <span className="text-primary">Activity</span>
@@ -150,7 +160,11 @@ const GitHubActivity = () => {
               >
                 <Card className="p-5 sm:p-6 h-full text-center">
                   <Icon className="text-primary mx-auto mb-2" size={22} aria-hidden="true" />
-                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-1 break-words">
+                  <div
+                    className={`text-2xl sm:text-3xl font-bold text-primary mb-1 break-words ${
+                      loading ? 'animate-pulse opacity-60' : ''
+                    }`}
+                  >
                     {stat.value}
                   </div>
                   <div className="text-xs sm:text-sm text-muted">{stat.label}</div>
