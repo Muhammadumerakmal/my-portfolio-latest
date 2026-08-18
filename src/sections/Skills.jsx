@@ -1,7 +1,16 @@
 ﻿import { motion } from 'framer-motion';
 import { Code2, Palette, Brain, Database, Server } from 'lucide-react';
-import { skills } from '../data/portfolioData';
+import { skills, projects } from '../data/portfolioData';
 import Card from '../components/Card';
+
+// Derived from real portfolio data so these figures always stay honest and
+// consistent with the rest of the site (never hand-edit — update the data).
+const overviewStats = [
+  { label: 'Projects Shipped', count: `${projects.length}` },
+  { label: 'Live Demos', count: `${projects.filter((p) => p.demo).length}` },
+  { label: 'AI & LLM Tools', count: `${skills.ai.length}` },
+  { label: 'Databases', count: `${skills.database.length}` },
+];
 
 const skillCategories = [
   { key: 'backend', title: 'Backend', icon: Server, color: 'text-blue-400' },
@@ -113,12 +122,7 @@ const Skills = () => {
               </p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { label: 'Backend APIs', count: '15+' },
-                { label: 'AI Integrations', count: '10+' },
-                { label: 'Databases', count: '5+' },
-                { label: 'Cloud Services', count: '8+' },
-              ].map((stat, index) => (
+              {overviewStats.map((stat, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0.8 }}

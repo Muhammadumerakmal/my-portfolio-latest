@@ -67,7 +67,7 @@ My goal is to help founders and startups build secure, scalable, and maintainabl
 ## 📫 Connect With Me
 
 * Email: [umeraura99@gmail.com](mailto:umeraura99@gmail.com)
-* LinkedIn: [linkedin.com/in/umar-backend-engineer](https://linkedin.com/in/umar-backend-engineer)
+* LinkedIn: [linkedin.com/in/umar-backend-engineer](https://www.linkedin.com/in/umar-backend-engineer)
 * Location: Karachi, Pakistan
 
 ---
@@ -85,7 +85,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 **Muhammad Umer Akmal**
 - Email: umeraura99@gmail.com
-- LinkedIn: [linkedin.com/in/umar-backend-engineer](https://linkedin.com/in/umar-backend-engineer)
+- LinkedIn: [linkedin.com/in/umar-backend-engineer](https://www.linkedin.com/in/umar-backend-engineer)
 - Location: Karachi, Pakistan
 
 ---

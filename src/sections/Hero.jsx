@@ -225,19 +225,21 @@ const Hero = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
       >
-        <motion.div
+        <motion.button
+          type="button"
           animate={{ y: [0, 10, 0] }}
           transition={{
             duration: 2,
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="flex flex-col items-center gap-2 cursor-pointer"
+          className="flex flex-col items-center gap-2 cursor-pointer bg-transparent border-0 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+          aria-label="Scroll to About section"
           onClick={() => document.getElementById('about').scrollIntoView({ behavior: 'smooth' })}
         >
           <span className="text-sm text-muted">Scroll to explore</span>
-          <ChevronDown className="text-primary" size={24} />
-        </motion.div>
+          <ChevronDown className="text-primary" size={24} aria-hidden="true" />
+        </motion.button>
       </motion.div>
     </section>
   );

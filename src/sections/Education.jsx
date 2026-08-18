@@ -82,7 +82,10 @@ const Education = () => {
                     className="flex items-start gap-3 p-4 rounded-xl bg-surface/50 border border-foreground/5 hover:border-primary/20 transition-all"
                   >
                     <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                    <p className="text-sm font-medium">{cert}</p>
+                    <div className="min-w-0">
+                      <p className="text-sm font-medium leading-snug">{cert.name}</p>
+                      <p className="text-xs text-muted mt-0.5">{cert.issuer}</p>
+                    </div>
                   </motion.div>
                 ))}
               </div>

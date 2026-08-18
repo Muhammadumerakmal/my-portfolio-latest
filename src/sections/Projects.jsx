@@ -1,9 +1,20 @@
-﻿import { motion } from 'framer-motion';
+﻿import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Code2, Rocket } from 'lucide-react';
 import { projects, projectsMeta } from '../data/portfolioData';
 import Card from '../components/Card';
 
+// Build the filter list from the categories actually present in the data,
+// so the chips never drift out of sync with the projects themselves.
+const categories = ['All', ...Array.from(new Set(projects.map((p) => p.category).filter(Boolean)))];
+
 const Projects = () => {
+  const [activeCategory, setActiveCategory] = useState('All');
+  const visibleProjects =
+    activeCategory === 'All'
+      ? projects
+      : projects.filter((project) => project.category === activeCategory);
+
   return (
     <section id="projects" className="scroll-mt-24 py-20 md:py-32 px-6 md:px-12 bg-surface/50">
       <div className="max-w-7xl mx-auto">
@@ -29,15 +40,50 @@ const Projects = () => {
           </p>
         </motion.div>
 
+        {/* Category Filter */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-wrap justify-center gap-3 mb-12"
+          role="tablist"
+          aria-label="Filter projects by category"
+        >
+          {categories.map((category) => {
+            const isActive = activeCategory === category;
+            return (
+              <motion.button
+                key={category}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => setActiveCategory(category)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
+                className={`px-5 py-2 rounded-full text-sm font-medium border transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
+                  isActive
+                    ? 'bg-primary/15 border-primary/40 text-primary'
+                    : 'bg-card border-foreground/10 text-muted hover:border-primary/30 hover:text-foreground'
+                }`}
+              >
+                {category}
+              </motion.button>
+            );
+          })}
+        </motion.div>
+
         {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <AnimatePresence mode="popLayout">
+          {visibleProjects.map((project, index) => (
             <motion.div
               key={project.id}
+              layout
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ delay: index * 0.06, duration: 0.4 }}
               className={project.featured ? 'md:col-span-2 md:row-span-2' : ''}
             >
               <Card className={`p-6 sm:p-8 h-full flex flex-col ${project.featured ? 'glow-border' : ''}`} glow={project.featured} tilt>
@@ -127,7 +173,8 @@ const Projects = () => {
               </Card>
             </motion.div>
           ))}
-        </div>
+          </AnimatePresence>
+        </motion.div>
 
         {/* View More CTA */}
         <motion.div

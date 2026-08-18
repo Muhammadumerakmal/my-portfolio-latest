@@ -9,7 +9,7 @@ export const personalInfo = {
   title: "Agentic AI Engineer & Backend Developer",
   location: "Karachi, Sindh, Pakistan",
   email: "umeraura99@gmail.com",
-  linkedin: "linkedin.com/in/muhammad-umer-akmal-1a065139a",
+  linkedin: "www.linkedin.com/in/umar-backend-engineer",
   github: "https://github.com/Muhammadumerakmal",
   resumeUrl: "/Muhammad-Umer-Akmal-Resume.pdf",
   resumeLabel: "Résumé",
@@ -178,10 +178,10 @@ export const education = [
 ];
 
 export const certifications = [
-  "Cisco Content Networking Specialist Certification",
-  "Anthropic Education",
-  "Coding Night",
-  "Modern Web and App Development with AI",
+  { name: "Content Networking Specialist", issuer: "Cisco" },
+  { name: "Modern Web & App Development with AI", issuer: "GIAIC" },
+  { name: "AI Education Program", issuer: "Anthropic" },
+  { name: "Coding Night Hackathon", issuer: "GIAIC" },
 ];
 
 export const languages = [
@@ -223,6 +223,7 @@ export const projects = [
     github: "https://github.com/Muhammadumerakmal/resturant",
     demo: "https://resturant-frontend-alpha.vercel.app/",
     image: "/projects/restaurant.png",
+    category: "AI",
     featured: true,
   },
   {
@@ -234,6 +235,7 @@ export const projects = [
     github: "https://github.com/Muhammadumerakmal/physical-ai-humanoid-robotics",
     demo: "https://physical-ai-humanoid-robotics-five-iota.vercel.app/",
     image: "/projects/physical-ai-robotics.jpg",
+    category: "AI",
     featured: false,
   },
   {
@@ -245,6 +247,7 @@ export const projects = [
     github: "https://github.com/Muhammadumerakmal/ai-clininc-sdd",
     demo: "https://ai-clininc-sdd-ten.vercel.app",
     image: "/projects/ai-clinic.png",
+    category: "AI",
     featured: false,
   },
   {
@@ -256,6 +259,7 @@ export const projects = [
     github: "https://github.com/Muhammadumerakmal/coding-night-final-umer-web-dev",
     demo: "https://coding-night-final-umer-web-dev.vercel.app",
     image: "/projects/coding-night.png",
+    category: "Full-Stack",
     featured: false,
   },
   {
@@ -266,6 +270,7 @@ export const projects = [
     tech: ["Python", "OpenAI Agents SDK", "LLM", "Agentic AI"],
     github: "https://github.com/Muhammadumerakmal/openai-agents-sdk-all-work",
     demo: "",
+    category: "AI",
     featured: false,
   },
   {
@@ -276,6 +281,7 @@ export const projects = [
     tech: ["AI", "Automation", "Full Stack"],
     github: "https://github.com/Muhammadumerakmal/ai-powered-freelancer-platform",
     demo: "",
+    category: "Full-Stack",
     featured: false,
   },
   {
@@ -286,6 +292,7 @@ export const projects = [
     tech: ["Node.js", "Express", "MongoDB", "REST API"],
     github: "https://github.com/Muhammadumerakmal/coreed-backend-latest",
     demo: "",
+    category: "Backend",
     featured: false,
   },
 ];
@@ -324,7 +331,7 @@ export const footerContent = {
     {
       icon: "ExternalLink",
       label: "LinkedIn",
-      href: "https://linkedin.com/in/muhammad-umer-akmal-1a065139a",
+      href: "https://www.linkedin.com/in/umar-backend-engineer",
     },
     {
       icon: "ExternalLink",
