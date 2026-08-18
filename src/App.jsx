@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import CursorGlow from './components/CursorGlow';
 import Terminal from './components/Terminal';
+import TabTitleGreeting from './components/TabTitleGreeting';
 import Hero from './sections/Hero';
 
 // Below-the-fold sections are code-split to keep the initial bundle small.
@@ -40,6 +41,7 @@ function App() {
       </main>
       <Footer />
       <Terminal />
+      <TabTitleGreeting />
       <Analytics />
     </div>
   );
