@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
 import { ArrowRight, ChevronDown, Sparkles, FileText } from 'lucide-react';
+import { track } from '@vercel/analytics';
 import Button from '../components/Button';
 import { personalInfo, hero } from '../data/portfolioData';
 
@@ -35,6 +36,35 @@ const TypewriterRoles = ({ roles }) => {
       {roles[index].substring(0, subIndex)}
       <span className="animate-pulse">|</span>
     </span>
+  );
+};
+
+// Circular headshot that gracefully falls back to an initials monogram when
+// public/profile.jpg is missing — so it looks intentional before a photo exists.
+const Avatar = () => {
+  const [failed, setFailed] = useState(!personalInfo.photo);
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, type: 'spring', stiffness: 200, damping: 18 }}
+      className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-2 border-primary/30 glow-soft overflow-hidden grid place-items-center bg-card mb-6"
+    >
+      {failed ? (
+        <span className="text-3xl font-bold text-primary glow-text">
+          {personalInfo.avatarInitials}
+        </span>
+      ) : (
+        <img
+          src={personalInfo.photo}
+          alt={personalInfo.name}
+          width={112}
+          height={112}
+          className="w-full h-full object-cover"
+          onError={() => setFailed(true)}
+        />
+      )}
+    </motion.div>
   );
 };
 
@@ -99,6 +129,8 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
+              <Avatar />
+
               <motion.div
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
                 whileHover={{ scale: 1.05 }}
@@ -148,7 +180,12 @@ const Hero = () => {
                   </Button>
                 ))}
                 {personalInfo.resumeUrl && (
-                  <Button href={personalInfo.resumeUrl} variant="ghost" external>
+                  <Button
+                    href={personalInfo.resumeUrl}
+                    variant="ghost"
+                    external
+                    onClick={() => track('resume_download')}
+                  >
                     <FileText size={18} />
                     {personalInfo.resumeLabel}
                   </Button>

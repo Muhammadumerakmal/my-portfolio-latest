@@ -1,11 +1,23 @@
 ﻿import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Link2, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, Link2, MapPin, Send, CheckCircle, AlertCircle, Copy, Check } from 'lucide-react';
 import { personalInfo, contactMeta } from '../data/portfolioData';
 import Card from '../components/Card';
 import Button from '../components/Button';
 
 const Contact = () => {
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(personalInfo.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      /* clipboard unavailable — the mailto link still works */
+    }
+  };
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -120,19 +132,32 @@ const Contact = () => {
             <Card className="p-6 sm:p-8" glow>
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
               <div className="space-y-6">
-                <motion.a
-                  href={`mailto:${personalInfo.email}`}
-                  className="flex items-start gap-4 p-4 rounded-xl bg-surface/50 border border-foreground/5 hover:border-primary/20 transition-all group"
-                  whileHover={{ x: 5 }}
-                >
-                  <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 group-hover:scale-110 transition-transform">
-                    <Mail className="text-primary" size={20} />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-sm text-muted mb-1">Email</p>
-                    <p className="font-medium break-words">{personalInfo.email}</p>
-                  </div>
-                </motion.a>
+                <div className="flex items-center gap-3 p-4 rounded-xl bg-surface/50 border border-foreground/5 hover:border-primary/20 transition-all group">
+                  <a
+                    href={`mailto:${personalInfo.email}`}
+                    className="flex items-start gap-4 min-w-0 flex-1"
+                  >
+                    <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 group-hover:scale-110 transition-transform">
+                      <Mail className="text-primary" size={20} />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-sm text-muted mb-1">Email</p>
+                      <p className="font-medium break-words group-hover:text-primary transition-colors">
+                        {personalInfo.email}
+                      </p>
+                    </div>
+                  </a>
+                  <motion.button
+                    type="button"
+                    onClick={copyEmail}
+                    aria-label={copied ? 'Email copied' : 'Copy email address'}
+                    title={copied ? 'Copied!' : 'Copy email'}
+                    whileTap={{ scale: 0.9 }}
+                    className="shrink-0 p-2.5 rounded-lg bg-surface border border-foreground/10 text-muted hover:text-primary hover:border-primary/30 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                  >
+                    {copied ? <Check size={18} className="text-primary" /> : <Copy size={18} />}
+                  </motion.button>
+                </div>
 
                 <motion.a
                   href={`https://${personalInfo.linkedin}`}
@@ -257,7 +282,14 @@ const Contact = () => {
                     }`}
                   >
                     {formStatus.type === 'success' ? (
-                      <CheckCircle size={20} />
+                      <motion.span
+                        initial={{ scale: 0, rotate: -30 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ type: 'spring', stiffness: 500, damping: 15 }}
+                        className="inline-flex"
+                      >
+                        <CheckCircle size={20} />
+                      </motion.span>
                     ) : formStatus.type === 'info' ? (
                       <Mail size={20} />
                     ) : (

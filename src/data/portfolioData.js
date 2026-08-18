@@ -13,6 +13,10 @@ export const personalInfo = {
   github: "https://github.com/Muhammadumerakmal",
   resumeUrl: "/Muhammad-Umer-Akmal-Resume.pdf",
   resumeLabel: "Résumé",
+  // Drop a square headshot at public/profile.jpg to activate the hero avatar.
+  // Until then, the initials monogram below is shown automatically.
+  photo: "/profile.jpg",
+  avatarInitials: "MU",
   tagline: "Building AI products that survive beyond the demo stage.",
   description:
     "I build scalable backend systems and integrate AI into products made for production — not just demos. My stack spans Node.js, Express, FastAPI, MongoDB, PostgreSQL, and modern LLM and agentic-AI workflows.",
@@ -188,6 +192,13 @@ export const languages = [
   { name: "English", level: "Professional Working", proficiency: 90 },
   { name: "Urdu", level: "Full Professional", proficiency: 100 },
 ];
+
+// ---- Testimonials --------------------------------------------------------
+// Real quotes only — the Testimonials section stays hidden while this is
+// empty, so nothing fabricated ever ships. Add entries in this shape:
+//   { quote: "…", name: "Full Name", role: "Their role", company: "Org" }
+// (company is optional). Paste 1–3 genuine quotes from a mentor / client.
+export const testimonials = [];
 
 // ---- Skills section ------------------------------------------------------
 export const skills = {
