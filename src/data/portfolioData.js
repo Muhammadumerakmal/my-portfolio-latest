@@ -258,18 +258,50 @@ export const projects = [
     image: "/projects/physical-ai-robotics.jpg",
     category: "AI",
     featured: false,
+    caseStudy: {
+      role: "Solo build — content, platform, and AI integration",
+      timeline: "2026",
+      problem:
+        "Most robotics learning material is either dense academic theory or shallow tutorials, with nothing in between for software engineers moving into embodied AI. I wanted a single resource that teaches Physical AI from first principles and lets you actually try the ideas, not just read about them.",
+      build:
+        "I built an open-source technical book on a Docusaurus + React platform covering ROS 2, Isaac Sim, VLA models and reinforcement learning — with full-text search, quizzes, and an in-browser Robot Lab where you command a 3D humanoid in natural language. An AI tutor and the lab planner call an LLM, but degrade gracefully to an offline keyword planner when no API key is present, so the site always works. CI type-checks and builds on every push and fails on broken links, and the whole book exports to a single PDF.",
+      outcome:
+        "A living, deployed learning platform that turns a passive textbook into something interactive — read a concept, quiz yourself, then drive a humanoid to see it in action. It's my most ambitious project and the clearest proof of shipping real, resilient AI features end to end.",
+      metrics: [
+        { label: "Format", value: "Book + labs" },
+        { label: "Robot Lab", value: "3D + NL" },
+        { label: "AI tutor", value: "Offline fallback" },
+        { label: "Pipeline", value: "CI + PDF" },
+      ],
+    },
   },
   {
     id: 2,
     title: "AI Clinic",
     description:
       "An AI-assisted clinic management platform built with a spec-driven workflow — intelligent appointment scheduling, patient records, and AI diagnostics in a clean, responsive UI. Live on Vercel.",
-    tech: ["TypeScript", "React", "AI", "Vercel"],
+    tech: ["TypeScript", "Express", "MongoDB", "OpenAI", "Qdrant"],
     github: "https://github.com/Muhammadumerakmal/ai-clininc-sdd",
     demo: "https://ai-clininc-sdd-ten.vercel.app",
     image: "/projects/ai-clinic.png",
     category: "AI",
     featured: false,
+    caseStudy: {
+      role: "Solo full-stack build — API, data model, and AI",
+      timeline: "2026",
+      problem:
+        "Clinics juggle patients, appointments, prescriptions, lab orders, pharmacy, and billing across disconnected tools. I wanted to prove I could design one coherent backend that ties all of it together — with AI assisting clinicians rather than bolted on as a gimmick — using a spec-driven workflow so the architecture stayed disciplined.",
+      build:
+        "I built a modular-monolith backend in TypeScript (strict) on Express 5 and MongoDB: 13 feature modules and 19 data models covering the full clinic workflow, with JWT + Google OAuth auth, role-based access control, audit logging, and rate limiting. AI features (symptom analysis, diagnosis suggestions, prescription drafts) run on OpenAI GPT-4o-mini, with Qdrant powering semantic search and BullMQ/Redis handling background jobs. Every endpoint returns a consistent response envelope, and the suite is tested with Vitest + Supertest.",
+      outcome:
+        "A production-shaped healthcare backend where authentication, RBAC, and AI assistance all fit one clean module structure — the strongest example of my 'scalable backend + real AI integration' focus, and a template I can extend to other domains.",
+      metrics: [
+        { label: "Modules", value: "13" },
+        { label: "Data models", value: "19" },
+        { label: "Auth", value: "JWT + OAuth" },
+        { label: "AI search", value: "Qdrant RAG" },
+      ],
+    },
   },
   {
     id: 3,
@@ -292,17 +324,6 @@ export const projects = [
     github: "https://github.com/Muhammadumerakmal/openai-agents-sdk-all-work",
     demo: "",
     category: "AI",
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "AI-Powered Freelancer Platform",
-    description:
-      "A freelancing platform that uses AI to match clients with the right talent and automate parts of the hiring and project workflow.",
-    tech: ["AI", "Automation", "Full Stack"],
-    github: "https://github.com/Muhammadumerakmal/ai-powered-freelancer-platform",
-    demo: "",
-    category: "Full-Stack",
     featured: false,
   },
   {
