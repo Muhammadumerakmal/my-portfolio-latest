@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { navigation } from '../data/portfolioData';
 import ThemeToggle from './ThemeToggle';
+import AccentPicker from './AccentPicker';
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -99,6 +100,7 @@ const Navbar = () => {
             ))}
           </ul>
           <span className="w-px h-5 bg-foreground/10" aria-hidden="true" />
+          <AccentPicker className="w-9 h-9" />
           <ThemeToggle className="w-9 h-9" />
           </div>
         </motion.nav>
@@ -110,6 +112,7 @@ const Navbar = () => {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
       >
+        <AccentPicker className="glass w-12 h-12 rounded-full border border-foreground/10 glow-border" />
         <ThemeToggle className="glass w-12 h-12 rounded-full border border-foreground/10 glow-border" />
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

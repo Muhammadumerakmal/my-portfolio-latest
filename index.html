@@ -17,6 +17,8 @@
           document.documentElement.classList.add(t);
           var m = document.querySelector('meta[name="theme-color"]');
           if (m) m.setAttribute('content', t === 'light' ? '#ffffff' : '#000000');
+          var a = localStorage.getItem('accent');
+          if (a && a !== '163 255 18') document.documentElement.style.setProperty('--color-primary', a);
         } catch (e) {
           document.documentElement.classList.add('dark');
         }

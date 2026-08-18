@@ -9,6 +9,7 @@ import {
   education,
   certifications,
 } from '../data/portfolioData';
+import { ACCENTS, applyAccent } from '../data/accents';
 
 // ---------------------------------------------------------------------------
 // An interactive, fully client-side terminal that lets visitors explore the
@@ -56,6 +57,7 @@ const COMMANDS = {
       '  neofetch     A quick visual summary',
       '  goto <sec>   Jump to a section (e.g. goto contact)',
       '  theme        Toggle light / dark',
+      '  accent <c>   Recolor the site (e.g. accent cyan)',
       '  clear        Clear the screen',
       '',
       `Sections: ${SECTION_IDS.join(', ')}`,
@@ -139,6 +141,19 @@ const COMMANDS = {
   theme: () => {
     const next = document.documentElement.classList.contains('light') ? 'dark' : 'light';
     return { lines: [`Switched to ${next} theme.`], action: { type: 'theme', theme: next } };
+  },
+
+  accent: (args) => {
+    const names = ACCENTS.map((a) => a.name.toLowerCase());
+    const name = (args[0] || '').toLowerCase();
+    if (!name) {
+      return { lines: [`Accent colors: ${names.join(', ')}`, 'Usage: accent <color>'] };
+    }
+    const found = ACCENTS.find((a) => a.name.toLowerCase() === name);
+    if (!found) {
+      return { lines: [`accent: unknown color "${name}". Try: ${names.join(', ')}`] };
+    }
+    return { lines: [`Accent set to ${found.name}.`], action: { type: 'accent', value: found.value } };
   },
 
   goto: (args) => {
@@ -245,6 +260,7 @@ const Terminal = () => {
     if (!action) return;
     if (action.type === 'clear') setLines([]);
     if (action.type === 'theme') setTheme(action.theme);
+    if (action.type === 'accent') applyAccent(action.value);
     if (action.type === 'open' || action.type === 'goto') {
       // Defer so the "Jumping…" line paints first.
       setTimeout(() => {
