@@ -4,6 +4,7 @@ import { Mail, Link2, MapPin, Send, CheckCircle, AlertCircle, Copy, Check } from
 import { personalInfo, contactMeta } from '../data/portfolioData';
 import Card from '../components/Card';
 import Button from '../components/Button';
+import SectionHeading from '../components/SectionHeading';
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
@@ -98,27 +99,14 @@ const Contact = () => {
   return (
     <section id="contact" className="scroll-mt-24 py-20 md:py-32 px-6 md:px-12 bg-surface/50">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
-            whileHover={{ scale: 1.05 }}
-          >
-            <Mail size={16} className="text-primary" />
-            <span className="text-sm font-medium text-primary">{contactMeta.badge}</span>
-          </motion.div>
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
-            {contactMeta.title} <span className="text-primary">{contactMeta.titleAccent}</span>
-          </h2>
-          <p className="text-lg text-muted max-w-2xl mx-auto">
-            {contactMeta.subtitle}
-          </p>
-        </motion.div>
+        <SectionHeading
+          index="09"
+          badge={contactMeta.badge}
+          icon={Mail}
+          title={contactMeta.title}
+          titleAccent={contactMeta.titleAccent}
+          subtitle={contactMeta.subtitle}
+        />
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Contact Information */}

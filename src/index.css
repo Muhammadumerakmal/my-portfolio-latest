@@ -37,6 +37,21 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
+  /* Subtle fixed dotted-grid texture behind everything, so the page reads as a
+     composed surface rather than a flat void. Very low contrast in both themes;
+     purely decorative and non-interactive. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: radial-gradient(rgb(var(--color-foreground) / 0.04) 1px, transparent 1px);
+    background-size: 34px 34px;
+    -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 85%);
+    mask-image: radial-gradient(ellipse at center, black, transparent 85%);
+  }
+
   html {
     scroll-behavior: smooth;
   }
@@ -91,5 +106,33 @@
     background: linear-gradient(rgb(var(--color-card)), rgb(var(--color-card))) padding-box,
                 linear-gradient(135deg, rgb(var(--color-primary) / 0.3), transparent) border-box;
     border: 1px solid transparent;
+  }
+
+  /* Thin centered hairline that fades out at both ends — used as a quiet
+     separator between major sections. */
+  .section-divider {
+    height: 1px;
+    border: 0;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgb(var(--color-primary) / 0.25),
+      transparent
+    );
+  }
+
+  /* Self-scrolling marquee for the skills tech strip. The track is duplicated
+     in markup, so translating by -50% yields a seamless loop. */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
   }
 }

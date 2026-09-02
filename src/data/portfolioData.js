@@ -21,6 +21,11 @@ export const personalInfo = {
 // ---- Hero section --------------------------------------------------------
 export const hero = {
   badge: "Available for Work",
+  // One honest line about current focus, surfaced in the hero status card.
+  currentlyBuilding: "an interactive Physical AI & Humanoid Robotics book",
+  // IANA timezone used for the live local-time clock in the status card.
+  timezone: "Asia/Karachi",
+  timezoneLabel: "Karachi",
   // Rotating job titles typed out under the name (edit freely):
   roles: [
     "Agentic AI Engineer",
@@ -190,11 +195,59 @@ export const languages = [
 ];
 
 // ---- Testimonials --------------------------------------------------------
-// Real quotes only — the Testimonials section stays hidden while this is
-// empty, so nothing fabricated ever ships. Add entries in this shape:
+// Real quotes only — until genuine quotes exist the section shows a truthful
+// "request a recommendation" call-to-action instead of fabricated social proof.
+// Add entries in this shape:
 //   { quote: "…", name: "Full Name", role: "Their role", company: "Org" }
 // (company is optional). Paste 1–3 genuine quotes from a mentor / client.
 export const testimonials = [];
+
+// Shown by the Testimonials section while `testimonials` is empty.
+export const testimonialsCta = {
+  badge: "Kind Words",
+  title: "What People",
+  titleAccent: "Say",
+  heading: "Recommendations, straight from the source",
+  body:
+    "I'd rather show real words than invent them. If we've worked together, a short LinkedIn recommendation means a lot — and if you're evaluating me, my recommendations there are the honest place to look.",
+  primaryLabel: "Request a recommendation",
+  primaryHref:
+    "https://www.linkedin.com/in/umar-backend-engineer/details/recommendations/",
+  secondaryLabel: "See LinkedIn profile",
+  secondaryHref: "https://www.linkedin.com/in/umar-backend-engineer",
+};
+
+// ---- FAQ -----------------------------------------------------------------
+export const faqMeta = {
+  badge: "Good to Know",
+  title: "Frequently Asked",
+  titleAccent: "Questions",
+  subtitle:
+    "The things people usually want to know before reaching out — straight answers, no fluff.",
+};
+
+export const faqs = [
+  {
+    q: "What kind of work do you take on?",
+    a: "Backend and AI-integration work most of all — scalable APIs, agentic/LLM features wired into real products, and full-stack builds when a project needs the whole thing. I'm open to full-time roles, freelance projects, and technical consulting.",
+  },
+  {
+    q: "What's your core stack?",
+    a: "Node.js, Express, and FastAPI on the backend; React, Next.js, TypeScript, and Tailwind on the frontend; MongoDB and PostgreSQL for data; and the OpenAI Agents SDK, LLM integration, and RAG for AI features. Everything ships containerised with Docker.",
+  },
+  {
+    q: "Where are you based, and does timezone matter?",
+    a: "I'm in Karachi, Pakistan (PKT, UTC+5). I work asynchronously and overlap comfortably with most European and Asian teams, and part of the US day — so timezone is rarely a blocker.",
+  },
+  {
+    q: "How do you approach a new project?",
+    a: "I start from the real problem and the production constraints, not the demo. That means a clear data model, a disciplined architecture, and AI features that stay useful and resilient (graceful fallbacks, not a gimmick that breaks without an API key).",
+  },
+  {
+    q: "How can we start working together?",
+    a: "Use the contact form below or email me directly. Tell me the problem you're solving and roughly where it stands — I'll come back with how I'd approach it and a realistic sense of scope and timeline.",
+  },
+];
 
 // ---- Skills section ------------------------------------------------------
 export const skills = {
@@ -311,6 +364,28 @@ export const projects = [
     },
   },
   {
+    id: 5,
+    title: "Project Camp",
+    description:
+      "An AI-enabled project management platform — project workspaces, tasks and subtasks, shared notes, team collaboration, and analytics, with an AI copilot that suggests tasks, flags risks, and balances workload. Full-stack build with a separate Express API and a TypeScript frontend, both live on Vercel.",
+    tech: ["Next.js", "TypeScript", "Express", "Node.js", "AI Copilot"],
+    github: "https://github.com/Muhammadumerakmal/coreed-arch-frontend",
+    demo: "https://coreed-arch-frontend.vercel.app",
+    category: "Full-Stack",
+    featured: false,
+  },
+  {
+    id: 8,
+    title: "Multi-Agent AI Orchestration",
+    description:
+      "A SaaS platform for orchestrating multiple AI agents that work together on a task — with account registration, sign-in, and a clean dashboard to coordinate agent runs. Built on a modern TypeScript stack and deployed on Vercel.",
+    tech: ["TypeScript", "React", "Agentic AI", "Vercel"],
+    github: "https://github.com/Muhammadumerakmal/ai-soft",
+    demo: "https://ai-soft-frontend.vercel.app",
+    category: "AI",
+    featured: false,
+  },
+  {
     id: 3,
     title: "HelpHub AI",
     description:
@@ -399,5 +474,6 @@ export const navigation = [
   { name: "Education", href: "#education" },
   { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#skills" },
+  { name: "FAQ", href: "#faq" },
   { name: "Contact", href: "#contact" },
 ];

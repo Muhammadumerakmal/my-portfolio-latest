@@ -2,6 +2,7 @@
 import { Code2, Palette, Brain, Database, Server } from 'lucide-react';
 import { skills, projects } from '../data/portfolioData';
 import Card from '../components/Card';
+import SectionHeading from '../components/SectionHeading';
 
 // Derived from real portfolio data so these figures always stay honest and
 // consistent with the rest of the site (never hand-edit — update the data).
@@ -20,31 +21,40 @@ const skillCategories = [
   { key: 'devops', title: 'DevOps', icon: Code2, color: 'text-orange-400' },
 ];
 
+// Flat list of every technology, de-duplicated, for the marquee strip.
+const allTech = [...new Set(Object.values(skills).flat())];
+
 const Skills = () => {
   return (
     <section id="skills" className="scroll-mt-24 py-20 md:py-32 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+        <SectionHeading
+          index="06"
+          badge="Technical Expertise"
+          icon={Code2}
+          title="Skills &"
+          titleAccent="Technologies"
+          subtitle="A comprehensive toolkit for building modern, scalable, and intelligent applications"
+        />
+
+        {/* Tech marquee — a slow, self-scrolling strip of the full stack.
+            Duplicated once so the loop is seamless; pauses on hover and
+            freezes entirely under prefers-reduced-motion (see index.css). */}
+        <div
+          className="relative mb-14 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
+          aria-hidden="true"
         >
-          <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
-            whileHover={{ scale: 1.05 }}
-          >
-            <Code2 size={16} className="text-primary" />
-            <span className="text-sm font-medium text-primary">Technical Expertise</span>
-          </motion.div>
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
-            Skills & <span className="text-primary">Technologies</span>
-          </h2>
-          <p className="text-lg text-muted max-w-2xl mx-auto">
-            A comprehensive toolkit for building modern, scalable, and intelligent applications
-          </p>
-        </motion.div>
+          <div className="flex w-max gap-3 animate-marquee hover:[animation-play-state:paused]">
+            {[...allTech, ...allTech].map((tech, i) => (
+              <span
+                key={i}
+                className="px-4 py-2 rounded-full bg-card border border-foreground/10 text-sm font-medium text-muted whitespace-nowrap"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
 
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

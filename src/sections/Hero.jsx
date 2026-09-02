@@ -3,6 +3,7 @@ import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
 import { ArrowRight, ChevronDown, Sparkles, FileText } from 'lucide-react';
 import { track } from '@vercel/analytics';
 import Button from '../components/Button';
+import StatusCard from '../components/StatusCard';
 import { personalInfo, hero } from '../data/portfolioData';
 
 // Types out and deletes each role in a loop.
@@ -193,6 +194,8 @@ const Hero = () => {
               >
                 {personalInfo.description}
               </motion.p>
+
+              <StatusCard />
             </motion.div>
 
             {/* Floating Elements */}

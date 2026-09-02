@@ -10,6 +10,7 @@ import {
   certifications,
 } from '../data/portfolioData';
 import { ACCENTS, applyAccent } from '../data/accents';
+import { setTheme } from '../lib/theme';
 
 // ---------------------------------------------------------------------------
 // An interactive, fully client-side terminal that lets visitors explore the
@@ -27,19 +28,6 @@ const BANNER = [
   `Type "help" to see what you can do. Try "projects" or "goto contact".`,
   '',
 ];
-
-const setTheme = (theme) => {
-  const root = document.documentElement;
-  root.classList.remove('light', 'dark');
-  root.classList.add(theme);
-  try {
-    localStorage.setItem('theme', theme);
-  } catch {
-    /* storage unavailable — ignore */
-  }
-  const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.setAttribute('content', theme === 'light' ? '#ffffff' : '#000000');
-};
 
 // Each command returns { lines?, action? }. `action` runs a side effect
 // (scroll, theme, clear) after printing.
@@ -229,7 +217,8 @@ const Terminal = () => {
     return () => clearTimeout(t);
   }, []);
 
-  // Global shortcut: Ctrl+` toggles the terminal.
+  // Global shortcut: Ctrl+` toggles the terminal. Also open on request from
+  // the command palette via an 'open-terminal' event.
   useEffect(() => {
     const onKey = (e) => {
       if (e.ctrlKey && e.key === '`') {
@@ -238,8 +227,16 @@ const Terminal = () => {
         dismissHint();
       }
     };
+    const onOpen = () => {
+      setOpen(true);
+      dismissHint();
+    };
     window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    window.addEventListener('open-terminal', onOpen);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      window.removeEventListener('open-terminal', onOpen);
+    };
   }, [dismissHint]);
 
   const openTerminal = useCallback(() => {

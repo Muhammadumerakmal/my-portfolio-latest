@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import CursorGlow from './components/CursorGlow';
 import Terminal from './components/Terminal';
+import CommandPalette from './components/CommandPalette';
 import TabTitleGreeting from './components/TabTitleGreeting';
 import Hero from './sections/Hero';
 
@@ -17,6 +18,7 @@ const Projects = lazy(() => import('./sections/Projects'));
 const Skills = lazy(() => import('./sections/Skills'));
 const GitHubActivity = lazy(() => import('./sections/GitHubActivity'));
 const Testimonials = lazy(() => import('./sections/Testimonials'));
+const FAQ = lazy(() => import('./sections/FAQ'));
 const Contact = lazy(() => import('./sections/Contact'));
 
 function App() {
@@ -36,11 +38,13 @@ function App() {
           <Skills />
           <GitHubActivity />
           <Testimonials />
+          <FAQ />
           <Contact />
         </Suspense>
       </main>
       <Footer />
       <Terminal />
+      <CommandPalette />
       <TabTitleGreeting />
       <Analytics />
     </div>

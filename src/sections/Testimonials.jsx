@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
-import { Quote } from 'lucide-react';
-import { testimonials } from '../data/portfolioData';
+import { Quote, Link2, ArrowUpRight } from 'lucide-react';
+import { testimonials, testimonialsCta } from '../data/portfolioData';
 import Card from '../components/Card';
+import SectionHeading from '../components/SectionHeading';
 
 const initialsOf = (name) =>
   name
@@ -13,8 +14,53 @@ const initialsOf = (name) =>
     .toUpperCase();
 
 const Testimonials = () => {
-  // Stay invisible until real quotes exist — no fabricated social proof.
-  if (!testimonials.length) return null;
+  // No fabricated social proof. Until real quotes exist, show a truthful CTA
+  // that points to genuine LinkedIn recommendations instead of leaving a hole.
+  if (!testimonials.length) {
+    return (
+      <section id="testimonials" className="scroll-mt-24 py-20 md:py-32 px-6 md:px-12 bg-surface/50">
+        <div className="max-w-3xl mx-auto">
+          <SectionHeading
+            badge={testimonialsCta.badge}
+            icon={Quote}
+            title={testimonialsCta.title}
+            titleAccent={testimonialsCta.titleAccent}
+          />
+          <Card className="p-8 sm:p-10 text-center" glow>
+            <Quote className="text-primary/40 mx-auto mb-5" size={40} aria-hidden="true" />
+            <h3 className="text-xl sm:text-2xl font-bold mb-3">{testimonialsCta.heading}</h3>
+            <p className="text-muted leading-relaxed max-w-xl mx-auto mb-8">
+              {testimonialsCta.body}
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <motion.a
+                href={testimonialsCta.primaryHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-black font-semibold glow-border focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >
+                <Link2 size={18} />
+                {testimonialsCta.primaryLabel}
+              </motion.a>
+              <motion.a
+                href={testimonialsCta.secondaryHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-card border border-foreground/10 hover:border-primary/50 font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >
+                {testimonialsCta.secondaryLabel}
+                <ArrowUpRight size={18} />
+              </motion.a>
+            </div>
+          </Card>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="testimonials" className="scroll-mt-24 py-20 md:py-32 px-6 md:px-12 bg-surface/50">

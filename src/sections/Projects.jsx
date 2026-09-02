@@ -1,9 +1,10 @@
 ﻿import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Code2, Rocket, BookOpen } from 'lucide-react';
+import { ExternalLink, Code2, Rocket, BookOpen, Maximize2, X } from 'lucide-react';
 import { projects, projectsMeta } from '../data/portfolioData';
 import Card from '../components/Card';
 import CaseStudyModal from '../components/CaseStudyModal';
+import SectionHeading from '../components/SectionHeading';
 
 // Build the filter list from the categories actually present in the data,
 // so the chips never drift out of sync with the projects themselves.
@@ -12,6 +13,7 @@ const categories = ['All', ...Array.from(new Set(projects.map((p) => p.category)
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [activeCase, setActiveCase] = useState(null);
+  const [lightbox, setLightbox] = useState(null); // { src, title } | null
   const visibleProjects =
     activeCategory === 'All'
       ? projects
@@ -20,27 +22,14 @@ const Projects = () => {
   return (
     <section id="projects" className="scroll-mt-24 py-20 md:py-32 px-6 md:px-12 bg-surface/50">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
-            whileHover={{ scale: 1.05 }}
-          >
-            <Rocket size={16} className="text-primary" />
-            <span className="text-sm font-medium text-primary">{projectsMeta.badge}</span>
-          </motion.div>
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
-            {projectsMeta.title} <span className="text-primary">{projectsMeta.titleAccent}</span>
-          </h2>
-          <p className="text-lg text-muted max-w-2xl mx-auto">
-            {projectsMeta.subtitle}
-          </p>
-        </motion.div>
+        <SectionHeading
+          index="05"
+          badge={projectsMeta.badge}
+          icon={Rocket}
+          title={projectsMeta.title}
+          titleAccent={projectsMeta.titleAccent}
+          subtitle={projectsMeta.subtitle}
+        />
 
         {/* Category Filter */}
         <motion.div
@@ -89,17 +78,30 @@ const Projects = () => {
               className={project.featured ? 'md:col-span-2 md:row-span-2' : ''}
             >
               <Card className={`p-6 sm:p-8 h-full flex flex-col ${project.featured ? 'glow-border' : ''}`} glow={project.featured} tilt>
-                <div className={`-mx-6 sm:-mx-8 -mt-6 sm:-mt-8 mb-6 overflow-hidden border-b border-foreground/5 ${project.featured ? 'lg:flex-1 lg:min-h-0' : ''}`}>
+                <div className={`group -mx-6 sm:-mx-8 -mt-6 sm:-mt-8 mb-6 overflow-hidden border-b border-foreground/5 relative ${project.featured ? 'lg:flex-1 lg:min-h-0' : ''}`}>
                   {project.image ? (
-                    <img
-                      src={project.image}
-                      alt={`${project.title} preview`}
-                      loading="lazy"
-                      decoding="async"
-                      width={1280}
-                      height={800}
-                      className={`w-full object-cover object-center ${project.featured ? 'h-64 sm:h-80 lg:h-full' : 'h-40'}`}
-                    />
+                    <button
+                      type="button"
+                      onClick={() => setLightbox({ src: project.image, title: project.title })}
+                      aria-label={`Enlarge ${project.title} screenshot`}
+                      className="block w-full cursor-zoom-in focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary"
+                    >
+                      <img
+                        src={project.image}
+                        alt={`${project.title} preview`}
+                        loading="lazy"
+                        decoding="async"
+                        width={1280}
+                        height={800}
+                        className={`w-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105 ${project.featured ? 'h-64 sm:h-80 lg:h-full' : 'h-40'}`}
+                      />
+                      <span
+                        aria-hidden="true"
+                        className="pointer-events-none absolute top-3 right-3 grid place-items-center w-9 h-9 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                      >
+                        <Maximize2 size={16} />
+                      </span>
+                    </button>
                   ) : (
                     // No screenshot: show a branded gradient banner so every
                     // card has a consistent visual header.
@@ -214,6 +216,41 @@ const Projects = () => {
       <AnimatePresence>
         {activeCase && (
           <CaseStudyModal project={activeCase} onClose={() => setActiveCase(null)} />
+        )}
+      </AnimatePresence>
+
+      {/* Screenshot lightbox */}
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            role="dialog"
+            aria-label={`${lightbox.title} screenshot`}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setLightbox(null)}
+          >
+            <div className="absolute inset-0 bg-black/85 backdrop-blur-sm" />
+            <motion.img
+              src={lightbox.src}
+              alt={`${lightbox.title} preview`}
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-h-[85vh] max-w-6xl w-auto rounded-xl border border-foreground/15 shadow-2xl"
+            />
+            <button
+              type="button"
+              onClick={() => setLightbox(null)}
+              aria-label="Close image"
+              className="absolute top-4 right-4 grid place-items-center w-11 h-11 rounded-full bg-card border border-foreground/15 text-foreground hover:text-primary hover:border-primary/40 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            >
+              <X size={20} />
+            </button>
+          </motion.div>
         )}
       </AnimatePresence>
     </section>

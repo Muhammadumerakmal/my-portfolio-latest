@@ -1,37 +1,28 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Sun, Moon } from 'lucide-react';
-
-// Reads the theme applied by the inline boot script in index.html, so the
-// component and the DOM start in sync (no flash, no mismatch).
-const getInitialTheme = () => {
-  if (typeof document === 'undefined') return 'dark';
-  return document.documentElement.classList.contains('light') ? 'light' : 'dark';
-};
+import { getTheme, toggleTheme } from '../lib/theme';
 
 const ThemeToggle = ({ className = '' }) => {
-  const [theme, setTheme] = useState(getInitialTheme);
+  // Seed from the DOM (set by the inline boot script in index.html) so the
+  // icon starts in sync with no flash.
+  const [theme, setThemeState] = useState(() =>
+    typeof document === 'undefined' ? 'dark' : getTheme()
+  );
 
+  // Re-sync whenever the theme is changed anywhere (toggle, palette, terminal).
   useEffect(() => {
-    const root = document.documentElement;
-    root.classList.remove('light', 'dark');
-    root.classList.add(theme);
-    try {
-      localStorage.setItem('theme', theme);
-    } catch {
-      /* storage unavailable — ignore */
-    }
-    const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', theme === 'light' ? '#ffffff' : '#000000');
-  }, [theme]);
+    const sync = () => setThemeState(getTheme());
+    window.addEventListener('themechange', sync);
+    return () => window.removeEventListener('themechange', sync);
+  }, []);
 
-  const toggle = () => setTheme((t) => (t === 'light' ? 'dark' : 'light'));
   const isDark = theme === 'dark';
 
   return (
     <motion.button
       type="button"
-      onClick={toggle}
+      onClick={() => toggleTheme()}
       aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
       title={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
       whileHover={{ scale: 1.1 }}

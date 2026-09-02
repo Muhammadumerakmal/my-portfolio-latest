@@ -3,6 +3,7 @@ import { motion, useInView, animate } from 'framer-motion';
 import { aboutContent } from '../data/portfolioData';
 import { iconMap } from '../data/icons';
 import Card from '../components/Card';
+import SectionHeading from '../components/SectionHeading';
 
 // Counts up from 0 to the number in `value` once scrolled into view,
 // preserving any suffix like "+" or "%".
@@ -33,17 +34,11 @@ const About = () => {
   return (
     <section id="about" className="scroll-mt-24 py-20 md:py-32 px-6 md:px-12 relative">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
-            {aboutContent.title} <span className="text-primary">{aboutContent.titleAccent}</span>
-          </h2>
-        </motion.div>
+        <SectionHeading
+          index="01"
+          title={aboutContent.title}
+          titleAccent={aboutContent.titleAccent}
+        />
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Side - Main Content */}

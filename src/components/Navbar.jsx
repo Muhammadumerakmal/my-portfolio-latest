@@ -1,9 +1,13 @@
 ﻿import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Search } from 'lucide-react';
 import { navigation } from '../data/portfolioData';
 import ThemeToggle from './ThemeToggle';
 import AccentPicker from './AccentPicker';
+
+// Show the platform-correct modifier in the ⌘K hint chip.
+const isMac =
+  typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform || '');
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -99,6 +103,17 @@ const Navbar = () => {
               </motion.li>
             ))}
           </ul>
+          <span className="w-px h-5 bg-foreground/10" aria-hidden="true" />
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent('open-command-palette'))}
+            aria-label="Open command palette"
+            title="Command palette (Ctrl/⌘ + K)"
+            className="flex items-center gap-2 pl-3 pr-2 py-1.5 rounded-full text-xs font-medium text-foreground/60 hover:text-foreground border border-foreground/10 hover:border-primary/30 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            <Search size={13} aria-hidden="true" />
+            <kbd className="font-sans">{isMac ? '⌘' : 'Ctrl'} K</kbd>
+          </button>
           <span className="w-px h-5 bg-foreground/10" aria-hidden="true" />
           <AccentPicker className="w-9 h-9" />
           <ThemeToggle className="w-9 h-9" />

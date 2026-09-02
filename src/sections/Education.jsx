@@ -2,29 +2,19 @@
 import { GraduationCap, Award, Languages } from 'lucide-react';
 import { education, certifications, languages } from '../data/portfolioData';
 import Card from '../components/Card';
+import SectionHeading from '../components/SectionHeading';
 
 const Education = () => {
   return (
     <section id="education" className="scroll-mt-24 py-20 md:py-32 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
-            whileHover={{ scale: 1.05 }}
-          >
-            <GraduationCap size={16} className="text-primary" />
-            <span className="text-sm font-medium text-primary">Learning Journey</span>
-          </motion.div>
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
-            Education & <span className="text-primary">Certifications</span>
-          </h2>
-        </motion.div>
+        <SectionHeading
+          index="04"
+          badge="Learning Journey"
+          icon={GraduationCap}
+          title="Education &"
+          titleAccent="Certifications"
+        />
 
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
