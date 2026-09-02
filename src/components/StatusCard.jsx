@@ -35,7 +35,7 @@ const StatusCard = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.8, duration: 0.6 }}
-      className="glass rounded-2xl border border-foreground/10 glow-border p-5 max-w-md"
+      className="relative z-10 glass rounded-2xl border border-foreground/10 glow-border p-5 max-w-md"
     >
       {/* Availability + local time */}
       <div className="flex items-center justify-between gap-4 mb-4">

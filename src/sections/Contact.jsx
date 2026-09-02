@@ -23,6 +23,7 @@ const Contact = () => {
     name: '',
     email: '',
     message: '',
+    _gotcha: '', // honeypot — real users leave this empty
   });
 
   const [formStatus, setFormStatus] = useState({ type: '', message: '' });
@@ -60,6 +61,14 @@ const Contact = () => {
       return;
     }
 
+    // Honeypot tripped: a bot filled the hidden field. Pretend success and
+    // send nothing, so we neither spam the inbox nor tip off the bot.
+    if (formData._gotcha) {
+      setFormStatus({ type: 'success', message: "Message sent! I'll get back to you soon." });
+      setFormData({ name: '', email: '', message: '', _gotcha: '' });
+      return;
+    }
+
     // No Formspree ID configured: don't pretend to send — point to a direct
     // channel instead.
     if (!contactMeta.formspreeId) {
@@ -79,7 +88,7 @@ const Contact = () => {
       });
       if (res.ok) {
         setFormStatus({ type: 'success', message: "Message sent! I'll get back to you soon." });
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: '', email: '', message: '', _gotcha: '' });
       } else {
         setFormStatus({
           type: 'error',
@@ -212,6 +221,17 @@ const Contact = () => {
             <Card className="p-6 sm:p-8" glow>
               <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Honeypot: hidden from real users, catches bots. */}
+                <input
+                  type="text"
+                  name="_gotcha"
+                  value={formData._gotcha}
+                  onChange={handleChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="hidden"
+                />
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
                     Name
@@ -222,6 +242,7 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
+                    required
                     className="w-full px-4 py-3 rounded-xl bg-surface border border-foreground/10 focus:border-primary/50 focus:outline-none transition-colors"
                     placeholder="Your name"
                   />
@@ -237,6 +258,7 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
+                    required
                     className="w-full px-4 py-3 rounded-xl bg-surface border border-foreground/10 focus:border-primary/50 focus:outline-none transition-colors"
                     placeholder="your@email.com"
                   />
@@ -251,6 +273,8 @@ const Contact = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
+                    required
+                    minLength={10}
                     rows="6"
                     className="w-full px-4 py-3 rounded-xl bg-surface border border-foreground/10 focus:border-primary/50 focus:outline-none transition-colors resize-none"
                     placeholder="Tell me about your project..."

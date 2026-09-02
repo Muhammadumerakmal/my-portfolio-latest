@@ -70,8 +70,8 @@ const Navbar = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="glass rounded-full px-6 py-3 border border-foreground/10 glow-border flex items-center gap-2">
-          <ul className="flex items-center gap-1">
+          <div className="glass rounded-full px-4 py-3 border border-foreground/10 glow-border flex items-center gap-1.5">
+          <ul className="flex items-center gap-0.5">
             {navigation.map((item, index) => (
               <motion.li
                 key={item.name}
@@ -85,7 +85,7 @@ const Navbar = () => {
                     e.preventDefault();
                     handleNavClick(item.href);
                   }}
-                  className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  className={`relative px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                     activeSection === item.href.replace('#', '')
                       ? 'text-primary'
                       : 'text-foreground/70 hover:text-foreground'
@@ -109,12 +109,11 @@ const Navbar = () => {
             onClick={() => window.dispatchEvent(new CustomEvent('open-command-palette'))}
             aria-label="Open command palette"
             title="Command palette (Ctrl/⌘ + K)"
-            className="flex items-center gap-2 pl-3 pr-2 py-1.5 rounded-full text-xs font-medium text-foreground/60 hover:text-foreground border border-foreground/10 hover:border-primary/30 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            className="hidden xl:flex items-center gap-1.5 pl-2.5 pr-2 py-1.5 rounded-full text-xs font-medium text-foreground/60 hover:text-foreground border border-foreground/10 hover:border-primary/30 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
             <Search size={13} aria-hidden="true" />
             <kbd className="font-sans">{isMac ? '⌘' : 'Ctrl'} K</kbd>
           </button>
-          <span className="w-px h-5 bg-foreground/10" aria-hidden="true" />
           <AccentPicker className="w-9 h-9" />
           <ThemeToggle className="w-9 h-9" />
           </div>
