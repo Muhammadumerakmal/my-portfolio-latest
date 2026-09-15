@@ -49,6 +49,16 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock background scroll while the mobile menu overlay is open.
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [isMobileMenuOpen]);
+
   const handleNavClick = (href) => {
     setIsMobileMenuOpen(false);
     const element = document.querySelector(href);

@@ -155,9 +155,16 @@ const CommandPalette = () => {
     };
   }, [show, hide]);
 
-  // Focus the input once it mounts (DOM side effect only — no setState here).
+  // Focus the input once it mounts and lock background scroll while open
+  // (DOM side effects only — no setState here).
   useEffect(() => {
-    if (open) requestAnimationFrame(() => inputRef.current?.focus());
+    if (!open) return;
+    requestAnimationFrame(() => inputRef.current?.focus());
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
   }, [open]);
 
   const runCommand = useCallback(

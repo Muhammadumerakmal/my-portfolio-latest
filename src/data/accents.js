@@ -27,6 +27,9 @@ export const applyAccent = (value) => {
   } catch {
     /* storage unavailable — ignore */
   }
+  // Let any mounted picker re-sync when the accent is changed elsewhere
+  // (e.g. from the command palette or terminal).
+  window.dispatchEvent(new CustomEvent('accentchange', { detail: value }));
 };
 
 export const getSavedAccent = () => {

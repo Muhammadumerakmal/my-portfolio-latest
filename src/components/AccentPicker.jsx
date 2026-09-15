@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Palette, Check } from 'lucide-react';
 import { ACCENTS, applyAccent, getSavedAccent } from '../data/accents';
@@ -22,6 +22,13 @@ const Swatch = ({ accent, active, onClick }) => (
 const AccentPicker = ({ className = '' }) => {
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState(getSavedAccent);
+
+  // Keep the active swatch in sync when the accent changes elsewhere.
+  useEffect(() => {
+    const sync = (e) => setCurrent(e.detail);
+    window.addEventListener('accentchange', sync);
+    return () => window.removeEventListener('accentchange', sync);
+  }, []);
 
   const pick = (value) => {
     setCurrent(value);

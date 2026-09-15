@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Code2, Rocket, BookOpen, Maximize2, X } from 'lucide-react';
 import { projects, projectsMeta } from '../data/portfolioData';
@@ -14,6 +14,21 @@ const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [activeCase, setActiveCase] = useState(null);
   const [lightbox, setLightbox] = useState(null); // { src, title } | null
+
+  // While the lightbox is open, close on Escape and lock background scroll.
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setLightbox(null);
+    };
+    document.addEventListener('keydown', onKeyDown);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [lightbox]);
   const visibleProjects =
     activeCategory === 'All'
       ? projects
