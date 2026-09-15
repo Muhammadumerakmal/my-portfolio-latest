@@ -6,6 +6,7 @@ import ScrollProgress from './components/ScrollProgress';
 import CursorGlow from './components/CursorGlow';
 import Terminal from './components/Terminal';
 import CommandPalette from './components/CommandPalette';
+import BackToTop from './components/BackToTop';
 import TabTitleGreeting from './components/TabTitleGreeting';
 import Hero from './sections/Hero';
 
@@ -24,10 +25,16 @@ const Contact = lazy(() => import('./sections/Contact'));
 function App() {
   return (
     <div className="relative overflow-hidden">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-primary focus:text-black focus:font-semibold focus:shadow-lg"
+      >
+        Skip to content
+      </a>
       <ScrollProgress />
       <CursorGlow />
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <Suspense fallback={null}>
           <About />
@@ -45,6 +52,7 @@ function App() {
       <Footer />
       <Terminal />
       <CommandPalette />
+      <BackToTop />
       <TabTitleGreeting />
       <Analytics />
     </div>

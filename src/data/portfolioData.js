@@ -455,12 +455,12 @@ export const footerContent = {
   socials: [
     { icon: "Mail", label: "Email", href: "mailto:umeraura99@gmail.com" },
     {
-      icon: "ExternalLink",
+      icon: "Link2",
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/umar-backend-engineer",
     },
     {
-      icon: "ExternalLink",
+      icon: "FolderGit2",
       label: "GitHub",
       href: "https://github.com/Muhammadumerakmal",
     },
