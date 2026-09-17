@@ -53,11 +53,14 @@ const Experience = () => {
                     {exp.description}
                   </p>
 
-                  {exp.featured && exp.highlights && (
-                    <div className="space-y-3 mb-6">
+                  {exp.highlights && (
+                    <div className={exp.featured ? 'space-y-3 mb-6' : 'space-y-2 mb-4'}>
                       {exp.highlights.map((item) => (
-                        <div key={item} className="flex items-center gap-2 text-sm text-muted">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                        <div
+                          key={item}
+                          className={`flex items-start gap-2 text-muted ${exp.featured ? 'text-sm' : 'text-xs'}`}
+                        >
+                          <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
                           <span>{item}</span>
                         </div>
                       ))}

@@ -154,6 +154,11 @@ export const experiences = [
     description:
       "Designing and shipping production-ready web apps with Next.js, TypeScript, React, and Python backends — integrating the OpenAI Agents SDK for autonomous multi-step AI, containerising with Docker, and building REST APIs with auth, rate limiting, and pagination.",
     period: "2023 - Present",
+    highlights: [
+      "Production web apps in Next.js, React & TypeScript",
+      "OpenAI Agents SDK for multi-step autonomous AI",
+      "Dockerised REST APIs with auth & rate limiting",
+    ],
   },
   {
     id: 3,
@@ -162,6 +167,11 @@ export const experiences = [
     description:
       "Built full-stack applications with Node.js, React, and PostgreSQL — REST APIs, authentication, dashboards, and CRUD-based SaaS capstone projects.",
     period: "Mar 2025 - Present",
+    highlights: [
+      "Full-stack apps with Node.js, React & PostgreSQL",
+      "REST APIs, authentication & dashboards",
+      "CRUD-based SaaS capstone projects",
+    ],
   },
 ];
 
