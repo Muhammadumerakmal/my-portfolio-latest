@@ -1,6 +1,7 @@
 ﻿import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Link2, MapPin, Send, CheckCircle, AlertCircle, Copy, Check } from 'lucide-react';
+import { track } from '@vercel/analytics';
 import { personalInfo, contactMeta } from '../data/portfolioData';
 import Card from '../components/Card';
 import Button from '../components/Button';
@@ -87,6 +88,7 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
       if (res.ok) {
+        track('contact_submit');
         setFormStatus({ type: 'success', message: "Message sent! I'll get back to you soon." });
         setFormData({ name: '', email: '', message: '', _gotcha: '' });
       } else {

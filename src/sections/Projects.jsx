@@ -1,6 +1,7 @@
 ﻿import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Code2, Rocket, BookOpen, Maximize2, X } from 'lucide-react';
+import { track } from '@vercel/analytics';
 import { projects, projectsMeta } from '../data/portfolioData';
 import Card from '../components/Card';
 import CaseStudyModal from '../components/CaseStudyModal';
@@ -181,6 +182,7 @@ const Projects = () => {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => track('project_demo', { project: project.title })}
                       className="flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors"
                       whileHover={{ x: 3 }}
                     >
