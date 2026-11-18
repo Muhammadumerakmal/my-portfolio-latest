@@ -6,7 +6,7 @@
 
 export const personalInfo = {
   name: "Muhammad Umer Akmal",
-  title: "Agentic AI Engineer & Backend Developer",
+  title: "Full-Stack Developer & AI Engineer",
   location: "Karachi, Sindh, Pakistan",
   email: "umeraura99@gmail.com",
   linkedin: "www.linkedin.com/in/umar-backend-engineer",
@@ -64,7 +64,7 @@ export const aboutContent = {
   // Grounded in the resume PDF (public/Muhammad-Umer-Akmal-Resume.pdf).
   // Update here if your real figures change.
   stats: [
-    { number: "3+", label: "Roles & Internships" },
+    { number: "2", label: "Roles" },
     { number: "2+", label: "Years Experience" },
     { number: "13+", label: "Projects Showcased" },
     { number: "4+", label: "Certifications" },
@@ -160,19 +160,6 @@ export const experiences = [
       "Dockerised REST APIs with auth & rate limiting",
     ],
   },
-  {
-    id: 3,
-    company: "SMIT (Saylani Mass I.T Training)",
-    role: "Full-Stack Developer",
-    description:
-      "Built full-stack applications with Node.js, React, and PostgreSQL — REST APIs, authentication, dashboards, and CRUD-based SaaS capstone projects.",
-    period: "Mar 2025 - Present",
-    highlights: [
-      "Full-stack apps with Node.js, React & PostgreSQL",
-      "REST APIs, authentication & dashboards",
-      "CRUD-based SaaS capstone projects",
-    ],
-  },
 ];
 
 // ---- Education section ---------------------------------------------------
@@ -190,6 +177,13 @@ export const education = [
     year: "2023 - 2025",
     field: "Biology (Secondary Education)",
     type: "secondary",
+  },
+  {
+    id: 3,
+    institution: "SMIT (Saylani Mass I.T Training)",
+    field: "Full-Stack Web Development",
+    year: "Completed",
+    type: "training",
   },
 ];
 
