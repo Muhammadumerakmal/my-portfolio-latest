@@ -66,7 +66,7 @@ export const aboutContent = {
   stats: [
     { number: "3+", label: "Roles & Internships" },
     { number: "2+", label: "Years Experience" },
-    { number: "9+", label: "GitHub Projects" },
+    { number: "14+", label: "Featured Projects" },
     { number: "4+", label: "Certifications" },
   ],
   features: [
@@ -407,6 +407,66 @@ export const projects = [
     demo: "https://coding-night-final-umer-web-dev.vercel.app",
     image: "/projects/coding-night.png",
     category: "Full-Stack",
+    featured: false,
+  },
+  {
+    id: 9,
+    title: "HCM Lite",
+    description:
+      "AI-assisted Human Capital Management for Admin, HR and Employees — a full-stack Next.js app with a REST API, Prisma + PostgreSQL, JWT auth, and an OpenAI Agents SDK assistant that uses tool calling. Live on Vercel.",
+    tech: ["Next.js", "Prisma", "PostgreSQL", "OpenAI Agents SDK"],
+    github: "https://github.com/Muhammadumerakmal/ai-hack-smit",
+    demo: "https://ai-hack-smit.vercel.app",
+    image: "",
+    category: "AI",
+    featured: false,
+  },
+  {
+    id: 10,
+    title: "MEE Coaching Center Management",
+    description:
+      "A coaching-center management system for students, batches, attendance, fees, payments, receipts and reports — Next.js App Router on Supabase, with access enforced by server-side checks and PostgreSQL row-level security.",
+    tech: ["Next.js", "TypeScript", "Supabase", "PostgreSQL RLS"],
+    github: "https://github.com/Muhammadumerakmal/mee-english-center-ams-physical",
+    demo: "https://mee-english-center-ams-physical.vercel.app",
+    image: "",
+    category: "Full-Stack",
+    featured: false,
+  },
+  {
+    id: 11,
+    title: "ShiftFlow",
+    description:
+      "A shift-management platform built as an npm-workspaces monorepo — an Express API on Neon Postgres with a Next.js + Tailwind frontend.",
+    tech: ["Next.js", "Express", "Neon Postgres", "Monorepo"],
+    github: "https://github.com/Muhammadumerakmal/shiftflow",
+    demo: "https://shiftflow-frontend-ten.vercel.app",
+    image: "",
+    category: "Full-Stack",
+    featured: false,
+  },
+  {
+    id: 12,
+    title: "TwinOS",
+    description:
+      "A consent-based digital twin that learns how you make decisions, then measurably predicts, explains and stress-tests them — every prediction is scored against a \"stranger\" baseline. Built for a team hackathon; runs in demo mode with no API keys.",
+    tech: ["Next.js", "TypeScript", "LLM", "Hackathon"],
+    github: "https://github.com/Muhammadumerakmal/rocketathon-kys-ai-clone-captain-umer",
+    demo: "",
+    image: "",
+    category: "AI",
+    featured: false,
+  },
+  {
+    id: 13,
+    title: "Shop Desk",
+    description:
+      "A spec-driven customer desk for a small shop, built on the OpenAI Agents SDK with a Chainlit UI — cost-aware by design: cached price answers, input guardrails, typed orders, and human hand-off for stuck conversations.",
+    tech: ["Python", "OpenAI Agents SDK", "Chainlit", "Guardrails"],
+    github: "https://github.com/Muhammadumerakmal/shop-desk-project",
+    demo: "",
+    image: "",
+    category: "AI",
     featured: false,
   },
   {

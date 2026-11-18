@@ -11,10 +11,13 @@ import SectionHeading from '../components/SectionHeading';
 // so the chips never drift out of sync with the projects themselves.
 const categories = ['All', ...Array.from(new Set(projects.map((p) => p.category).filter(Boolean)))];
 
+const INITIAL_COUNT = 7; // featured (2 cols) + 5 cards fills the grid cleanly
+
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [activeCase, setActiveCase] = useState(null);
   const [lightbox, setLightbox] = useState(null); // { src, title } | null
+  const [showAll, setShowAll] = useState(false);
 
   // While the lightbox is open, close on Escape and lock background scroll.
   useEffect(() => {
@@ -30,10 +33,12 @@ const Projects = () => {
       document.body.style.overflow = prevOverflow;
     };
   }, [lightbox]);
-  const visibleProjects =
+  const filtered =
     activeCategory === 'All'
       ? projects
       : projects.filter((project) => project.category === activeCategory);
+  const visibleProjects = showAll ? filtered : filtered.slice(0, INITIAL_COUNT);
+  const hiddenCount = filtered.length - visibleProjects.length;
 
   return (
     <section id="projects" className="scroll-mt-24 py-20 md:py-32 px-6 md:px-12 bg-surface/50">
@@ -65,7 +70,10 @@ const Projects = () => {
                 type="button"
                 role="tab"
                 aria-selected={isActive}
-                onClick={() => setActiveCategory(category)}
+                onClick={() => {
+                  setActiveCategory(category);
+                  setShowAll(false);
+                }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
                 className={`px-5 py-2 rounded-full text-sm font-medium border transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
@@ -75,6 +83,9 @@ const Projects = () => {
                 }`}
               >
                 {category}
+                <span className="ml-2 text-xs opacity-60">
+                  {category === 'All' ? projects.length : projects.filter((p) => p.category === category).length}
+                </span>
               </motion.button>
             );
           })}
@@ -119,13 +130,21 @@ const Projects = () => {
                       </span>
                     </button>
                   ) : (
-                    // No screenshot: show a branded gradient banner so every
-                    // card has a consistent visual header.
+                    // No screenshot: branded banner with a project monogram and a
+                    // live/code badge so every card has a consistent header.
                     <div
                       aria-hidden="true"
-                      className={`w-full flex items-center justify-center bg-gradient-to-br from-primary/20 via-card to-surface ${project.featured ? 'h-64 sm:h-80 lg:h-full' : 'h-40'}`}
+                      className={`relative w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary/25 via-card to-surface ${project.featured ? 'h-64 sm:h-80 lg:h-full' : 'h-40'}`}
                     >
-                      <Code2 className="text-primary/50" size={44} />
+                      <div className="absolute inset-0 opacity-30 [background-image:radial-gradient(circle_at_1px_1px,currentColor_1px,transparent_0)] [background-size:18px_18px] text-primary/40" />
+                      <span className="relative text-5xl font-black tracking-tight text-primary/60 select-none">
+                        {project.title.split(/\s+/).filter((w) => /^[A-Za-z]/.test(w)).slice(0, 2).map((w) => w[0].toUpperCase()).join('')}
+                      </span>
+                      {project.demo && (
+                        <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-black/40 px-2.5 py-1 text-[11px] font-medium text-white">
+                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> Live
+                        </span>
+                      )}
                     </div>
                   )}
                 </div>
@@ -207,6 +226,19 @@ const Projects = () => {
           ))}
           </AnimatePresence>
         </motion.div>
+
+        {(hiddenCount > 0 || (showAll && filtered.length > INITIAL_COUNT)) && (
+          <div className="text-center mt-10">
+            <button
+              type="button"
+              onClick={() => setShowAll((v) => !v)}
+              aria-expanded={showAll}
+              className="px-6 py-3 rounded-xl bg-primary/10 border border-primary/30 text-primary text-sm font-semibold hover:bg-primary/20 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            >
+              {showAll ? 'Show fewer projects' : `Show ${hiddenCount} more project${hiddenCount === 1 ? '' : 's'}`}
+            </button>
+          </div>
+        )}
 
         {/* View More CTA */}
         <motion.div
