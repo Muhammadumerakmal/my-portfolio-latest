@@ -66,7 +66,7 @@ export const aboutContent = {
   stats: [
     { number: "3+", label: "Roles & Internships" },
     { number: "2+", label: "Years Experience" },
-    { number: "14+", label: "Featured Projects" },
+    { number: "13+", label: "Projects Showcased" },
     { number: "4+", label: "Certifications" },
   ],
   features: [
@@ -180,14 +180,15 @@ export const education = [
   {
     id: 1,
     institution: "freeCodeCamp",
-    year: "Feb 2025",
+    field: "Web Development Certifications",
+    year: "Completed Feb 2025",
     type: "certification",
   },
   {
     id: 2,
     institution: "Board of Secondary Education, Karachi",
     year: "2023 - 2025",
-    field: "Biology",
+    field: "Biology (Secondary Education)",
     type: "secondary",
   },
 ];

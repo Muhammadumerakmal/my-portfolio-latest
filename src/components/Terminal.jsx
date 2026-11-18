@@ -214,7 +214,15 @@ const Terminal = () => {
     }
     if (seen) return;
     const t = setTimeout(() => setShowHint(true), 4000);
-    return () => clearTimeout(t);
+    // Auto-dismiss so the hint never lingers over page content.
+    const hide = setTimeout(() => {
+      setShowHint(false);
+      try { localStorage.setItem('terminalHintSeen', '1'); } catch { /* ignore */ }
+    }, 12000);
+    return () => {
+      clearTimeout(t);
+      clearTimeout(hide);
+    };
   }, []);
 
   // Global shortcut: Ctrl+` toggles the terminal. Also open on request from

@@ -172,7 +172,7 @@ const Hero = () => {
               transition={{ delay: 0.3, duration: 0.7 }}
               className="space-y-6"
             >
-              <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight text-foreground/90">
                 {hero.headlineLines.map((line, i) => (
                   <motion.span
                     key={i}
