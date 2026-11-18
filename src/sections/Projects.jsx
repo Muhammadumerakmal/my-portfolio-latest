@@ -11,7 +11,7 @@ import SectionHeading from '../components/SectionHeading';
 // so the chips never drift out of sync with the projects themselves.
 const categories = ['All', ...Array.from(new Set(projects.map((p) => p.category).filter(Boolean)))];
 
-const INITIAL_COUNT = 7; // featured (2 cols) + 5 cards fills the grid cleanly
+const INITIAL_COUNT = 6; // featured (2x2) + 2 beside it + 3 below fills the grid exactly
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -105,13 +105,13 @@ const Projects = () => {
               className={project.featured ? 'md:col-span-2 md:row-span-2' : ''}
             >
               <Card className={`p-6 sm:p-8 h-full flex flex-col ${project.featured ? 'glow-border' : ''}`} glow={project.featured} tilt>
-                <div className={`group -mx-6 sm:-mx-8 -mt-6 sm:-mt-8 mb-6 overflow-hidden border-b border-foreground/5 relative ${project.featured ? 'lg:flex-1 lg:min-h-0' : ''}`}>
+                <div className={`group -mx-6 sm:-mx-8 -mt-6 sm:-mt-8 mb-6 overflow-hidden border-b border-foreground/5 relative ${project.featured ? 'lg:flex-1 lg:min-h-0 lg:max-h-[36rem]' : ''}`}>
                   {project.image ? (
                     <button
                       type="button"
                       onClick={() => setLightbox({ src: project.image, title: project.title })}
                       aria-label={`Enlarge ${project.title} screenshot`}
-                      className="block w-full cursor-zoom-in focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary"
+                      className={`block w-full cursor-zoom-in ${project.featured ? 'lg:h-full' : ''} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary`}
                     >
                       <img
                         src={project.image}
@@ -120,7 +120,7 @@ const Projects = () => {
                         decoding="async"
                         width={1280}
                         height={800}
-                        className={`w-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105 ${project.featured ? 'h-64 sm:h-80 lg:h-full' : 'h-40'}`}
+                        className={`w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105 ${project.featured ? 'h-64 sm:h-80 lg:h-full' : 'h-40'}`}
                       />
                       <span
                         aria-hidden="true"
